@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decade Investing Framework — At-a-Glance Reference</title>
+<style>
+  /* ─── Reset & Base ─── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #0f1117;
+    --surface:   #1a1d27;
+    --surface2:  #22263a;
+    --border:    #2e3355;
+    --accent:    #6c8ef5;
+    --accent2:   #4ecdc4;
+    --accent3:   #f7c948;
+    --accent4:   #f06292;
+    --accent5:   #81c784;
+    --text:      #e8eaf0;
+    --muted:     #8b90a8;
+    --danger:    #ef5350;
+    --warning:   #ffb74d;
+    --ok:        #66bb6a;
+    --radius:    10px;
+    --radius-sm: 6px;
+  }
+
+  html { font-size: 13px; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    padding: 20px;
+  }
+
+  /* ─── Page Header ─── */
+  .page-header {
+    text-align: center;
+    padding: 28px 20px 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .page-header h1 {
+    font-size: 1.85rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 4px;
+  }
+  .page-header .subtitle {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  .edu-badge {
+    display: inline-block;
+    background: #2a1a00;
+    border: 1px solid var(--warning);
+    color: var(--warning);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  /* ─── Grid Layout ─── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .grid-2col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    max-width: 1280px;
+    margin: 0 auto 14px;
+  }
+  .grid-full {
+    max-width: 1280px;
+    margin: 0 auto 14px;
+  }
+
+  /* ─── Card ─── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .card.accent-left {
+    border-left: 3px solid var(--accent);
+  }
+  .card.accent-teal {
+    border-left: 3px solid var(--accent2);
+  }
+  .card.accent-yellow {
+    border-left: 3px solid var(--accent3);
+  }
+  .card.accent-pink {
+    border-left: 3px solid var(--accent4);
+  }
+  .card.accent-green {
+    border-left: 3px solid var(--accent5);
+  }
+
+  /* ─── Section Title ─── */
+  .section-title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+  .card-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .step-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 0.72rem;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .s1 { background: var(--accent);  color: #fff; }
+  .s2 { background: #3f7ff5;  color: #fff; }
+  .s3 { background: var(--accent2); color: #0f1117; }
+  .s4 { background: var(--accent3); color: #0f1117; }
+  .s5 { background: var(--accent4); color: #fff; }
+  .s6 { background: var(--accent5); color: #0f1117; }
+
+  /* ─── Lists ─── */
+  ul.checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  ul.checklist li {
+    display: flex;
+    gap: 7px;
+    font-size: 0.82rem;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  ul.checklist li::before {
+    content: "›";
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 0px;
+  }
+  ul.checklist li.warn::before { color: var(--warning); content: "⚠"; font-size: 0.7rem; margin-top: 2px; }
+  ul.checklist li.ok::before   { color: var(--ok);      content: "✓"; font-size: 0.75rem; }
+  ul.checklist li.bad::before  { color: var(--danger);  content: "✕"; font-size: 0.75rem; }
+
+  /* ─── Tables ─── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+  }
+  th {
+    text-align: left;
+    padding: 5px 8px;
+    background: var(--surface2);
+    color: var(--muted);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+
+  /* ─── Score Bands ─── */
+  .score-row td:first-child { font-weight: 700; }
+  .score-high  td:first-child { color: var(--ok); }
+  .score-mid   td:first-child { color: var(--warning); }
+  .score-low   td:first-child { color: var(--danger); }
+
+  /* ─── Pill Tags ─── */
+  .tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 20px;
+    margin: 2px 2px 2px 0;
+  }
+  .tag-blue   { background: rgba(108,142,245,0.18); color: var(--accent);  border: 1px solid rgba(108,142,245,0.35); }
+  .tag-teal   { background: rgba(78,205,196,0.15);  color: var(--accent2); border: 1px solid rgba(78,205,196,0.3); }
+  .tag-yellow { background: rgba(247,201,72,0.15);  color: var(--accent3); border: 1px solid rgba(247,201,72,0.3); }
+  .tag-pink   { background: rgba(240,98,146,0.15);  color: var(--accent4); border: 1px solid rgba(240,98,146,0.3); }
+  .tag-green  { background: rgba(129,199,132,0.15); color: var(--accent5); border: 1px solid rgba(129,199,132,0.3); }
+  .tag-red    { background: rgba(239,83,80,0.15);   color: var(--danger);  border: 1px solid rgba(239,83,80,0.3); }
+
+  /* ─── Inline code / callouts ─── */
+  .callout {
+    background: var(--surface2);
+    border-left: 3px solid var(--accent3);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .callout strong { color: var(--accent3); }
+
+  code {
+    font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
+    font-size: 0.77rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1px 4px;
+    color: var(--accent2);
+  }
+
+  /* ─── Divider ─── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 14px 0;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ─── Footer ─── */
+  .footer {
+    max-width: 1280px;
+    margin: 20px auto 0;
+    background: #1a0a00;
+    border: 1px solid #5a3a00;
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    font-size: 0.77rem;
+    color: #c9a45a;
+    line-height: 1.6;
+  }
+  .footer strong { color: var(--warning); }
+
+  /* ─── Workflow flow line ─── */
+  .workflow-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    max-width: 1280px;
+    margin: 0 auto 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .wf-step {
+    flex: 1;
+    padding: 14px 14px 14px 16px;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .wf-step:last-child { border-right: none; }
+  .wf-step::after {
+    content: "›";
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 1.1rem;
+    font-weight: 700;
+    z-index: 2;
+  }
+  .wf-step:last-child::after { display: none; }
+  .wf-num {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .wf-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+  .wf-file {
+    font-size: 0.72rem;
+    color: var(--accent2);
+    font-family: 'SF Mono', Consolas, monospace;
+  }
+  .wf-desc {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* ─── Print ─── */
+  @media print {
+    body { background: #fff; color: #111; padding: 10px; font-size: 11px; }
+    .card, .workflow-row, .footer {
+      background: #f8f8f8 !important;
+      border-color: #ccc !important;
+      color: #111 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    :root {
+      --text: #111;
+      --muted: #555;
+      --bg: #fff;
+      --surface: #f4f4f4;
+      --surface2: #e8e8e8;
+      --border: #ccc;
+    }
+    .page-header h1 {
+      -webkit-text-fill-color: #1a237e;
+      color: #1a237e;
+    }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════ PAGE HEADER -->
+<div class="page-header">
+  <h1>Decade Investing Framework</h1>
+  <div class="subtitle">10-Year Horizon Research Process · At-a-Glance Reference</div>
+  <span class="edu-badge">Educational Only — Not Financial Advice</span>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ WORKFLOW ROW -->
+<div class="workflow-row">
+  <div class="wf-step">
+    <div class="wf-num">Step 1</div>
+    <div class="wf-title">Frame Thesis</div>
+    <div class="wf-file">decision-journal-template</div>
+    <div class="wf-desc">2-sentence claim + 4–6 conditions for success + 3 explicit falsifiers</div>
+  </div>
+  <div class="wf-step">
+    <div class="wf-num">Step 2</div>
+    <div class="wf-title">Megatrend Check</div>
+    <div class="wf-file">megatrends-checklist</div>
+    <div class="wf-desc">Score 6 categories → detect secular vs. cyclical vs. fad</div>
+  </div>
+  <div class="wf-step">
+    <div class="wf-num">Step 3</div>
+    <div class="wf-title">Durability Score</div>
+    <div class="wf-file">durability-rubric</div>
+    <div class="wf-desc">Score moat, TAM, tailwind, balance sheet, management, disruption</div>
+  </div>
+  <div class="wf-step">
+    <div class="wf-num">Step 4</div>
+    <div class="wf-title">Valuation Sanity</div>
+    <div class="wf-file">valuation-sanity</div>
+    <div class="wf-desc">Reverse DCF → owner earnings yield → 3-scenario range → margin of safety</div>
+  </div>
+  <div class="wf-step">
+    <div class="wf-num">Step 5</div>
+    <div class="wf-title">Size the Position</div>
+    <div class="wf-file">risk-and-sizing</div>
+    <div class="wf-desc">Drawdown tolerance → correlation check → behavioral pitfall audit</div>
+  </div>
+  <div class="wf-step">
+    <div class="wf-num">Step 6</div>
+    <div class="wf-title">Log Decision</div>
+    <div class="wf-file">decision-journal-template</div>
+    <div class="wf-desc">Record all scores, exit conditions, review dates — before looking at P&amp;L</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ ROW 1: MEGATREND + DURABILITY -->
+<div class="grid" style="margin: 0 auto 14px;">
+
+  <!-- Megatrend Categories -->
+  <div class="card accent-left">
+    <div class="section-title">Step 2 · Megatrend Checklist</div>
+    <div class="card-title"><span class="step-badge s2">2</span> 6 Secular Categories (each /5)</div>
+    <table>
+      <tr><th>Category</th><th>Key Signal</th></tr>
+      <tr><td><span class="tag tag-blue">Demographics</span></td><td>Locked-in cohort data; UN projections</td></tr>
+      <tr><td><span class="tag tag-teal">Energy Transition</span></td><td>Wright's Law cost curves; policy durability</td></tr>
+      <tr><td><span class="tag tag-yellow">Compute &amp; AI</span></td><td>Build vs. digestion phase; stack layer</td></tr>
+      <tr><td><span class="tag tag-pink">Biotech</span></td><td>Platform vs. single product; trial base rates</td></tr>
+      <tr><td><span class="tag tag-green">Geopolitical</span></td><td>Capex announced ≠ shovel in ground</td></tr>
+      <tr><td><span class="tag tag-red">Financial/Macro</span></td><td>INVERTED — high = NOT rate-dependent</td></tr>
+    </table>
+    <div class="divider" style="margin: 2px 0;"></div>
+    <table>
+      <tr><th>Score</th><th>Interpretation</th></tr>
+      <tr class="score-row score-high"><td>22–30</td><td>Strong secular anchor → proceed</td></tr>
+      <tr class="score-row score-mid"><td>14–21</td><td>Mixed — identify cyclical component</td></tr>
+      <tr class="score-row score-low"><td>&lt;14</td><td>Likely fad — extraordinary evidence needed</td></tr>
+    </table>
+    <div class="callout"><strong>Fad detection:</strong> Narrative test · Crowding test · History test · Supply response test · Time-horizon test · Contrarian comfort test</div>
+  </div>
+
+  <!-- Durability Dimensions -->
+  <div class="card accent-teal">
+    <div class="section-title">Step 3 · Durability Rubric</div>
+    <div class="card-title"><span class="step-badge s3">3</span> 6 Dimensions (each /5)</div>
+    <table>
+      <tr><th>Dimension</th><th>Key Heuristic</th></tr>
+      <tr><td><strong>Competitive Moat</strong></td><td>ROIC &gt;15% sustained 5+ yrs; NRR &gt;110%</td></tr>
+      <tr><td><strong>TAM &amp; Runway</strong></td><td>Bottom-up penetration rate; years to saturation</td></tr>
+      <tr><td><strong>Tailwind Alignment</strong></td><td>Direct vs. indirect; headwinds offsetting?</td></tr>
+      <tr><td><strong>Balance Sheet</strong></td><td>Survive revenue −30% without equity dilution</td></tr>
+      <tr><td><strong>Management / CapAlloc</strong></td><td>M&amp;A 5-yr look-back; insider ownership; vesting</td></tr>
+      <tr><td><strong>Disruption Risk</strong></td><td>5=low risk; 0=disruption already occurring</td></tr>
+    </table>
+    <div class="divider" style="margin: 2px 0;"></div>
+    <table>
+      <tr><th>Score</th><th>Interpretation</th><th>Position Guidance</th></tr>
+      <tr class="score-row score-high"><td>24–30</td><td>High durability</td><td>Up to 10–15%</td></tr>
+      <tr class="score-row score-mid"><td>16–23</td><td>Moderate</td><td>5–8%</td></tr>
+      <tr class="score-row score-low"><td>8–15</td><td>Low</td><td>3–5%</td></tr>
+      <tr class="score-row score-low"><td>&lt;8</td><td>Severe concerns</td><td>1–3% or avoid</td></tr>
+    </table>
+    <div class="callout"><strong>Rule:</strong> Any single dimension at 0 or 1 = thesis-threatening, regardless of total score.</div>
+  </div>
+
+  <!-- Moat Types -->
+  <div class="card accent-yellow">
+    <div class="section-title">Step 3 · Moat Types Reference</div>
+    <div class="card-title"><span class="step-badge s3">3</span> Moat Type Evidence</div>
+    <ul class="checklist">
+      <li><strong>Switching costs</strong> — customer migration cost &gt; stay cost; NRR &gt;115%; multi-year contracts</li>
+      <li><strong>Network effects</strong> — value per user grows with user count; winner-take-most dynamics; density matters</li>
+      <li><strong>Cost advantage</strong> — structural (process, location, scale) not cyclical; sustainable at lower-volume</li>
+      <li><strong>Intangible assets</strong> — patent life remaining; brand with demonstrated pricing power through recession</li>
+      <li><strong>Efficient scale</strong> — market too small for viable second entrant; regional utility logic</li>
+    </ul>
+    <div class="divider" style="margin: 4px 0;"></div>
+    <div class="section-title">Base Rates — ROIC Persistence</div>
+    <ul class="checklist">
+      <li class="ok">~50% of ROIC &gt;20% companies sustain it for 5+ years</li>
+      <li class="ok">~25% sustain it for 10+ years</li>
+      <li class="warn">Declining gross margin = moat erosion signal</li>
+      <li class="bad">ROIC trending toward WACC = moat narrowing</li>
+    </ul>
+    <div class="divider" style="margin: 4px 0;"></div>
+    <div class="section-title">Disruption Clock by Industry</div>
+    <table>
+      <tr><th>Industry</th><th>Disruption Cycle</th></tr>
+      <tr><td>Media / Software</td><td>5–8 years</td></tr>
+      <tr><td>Retail / Finance</td><td>8–15 years</td></tr>
+      <tr><td>Industrials</td><td>15–25 years</td></tr>
+      <tr><td>Healthcare</td><td>20–30 years</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ ROW 2: VALUATION + SIZING -->
+<div class="grid" style="margin: 0 auto 14px;">
+
+  <!-- Valuation Frameworks -->
+  <div class="card accent-yellow">
+    <div class="section-title">Step 4 · Valuation Sanity</div>
+    <div class="card-title"><span class="step-badge s4">4</span> Four Frameworks</div>
+
+    <div class="section-title" style="margin-top: 4px;">① Reverse DCF</div>
+    <ul class="checklist">
+      <li>Work <em>backward</em> from market price → what growth is implied?</li>
+      <li>Discount rate: 8–10% base; 12–15% for small-cap/pre-profitability</li>
+      <li>Terminal growth: nominal GDP (2–3%) ceiling for mature businesses</li>
+    </ul>
+    <table style="margin-top: 6px;">
+      <tr><th>Growth Percentile</th><th>Historical Base Rate</th></tr>
+      <tr><td>Median S&amp;P 500</td><td>5–7% rev CAGR / 10yr</td></tr>
+      <tr><td>Top quartile</td><td>12–15%</td></tr>
+      <tr><td>Top decile</td><td>18–22%</td></tr>
+      <tr><td>Top 5%</td><td>22–30%+</td></tr>
+      <tr><td>Sustaining 20%+ for 10yr</td><td>&lt;5% of public cos.</td></tr>
+    </table>
+
+    <div class="section-title" style="margin-top: 8px;">② Owner Earnings Yield</div>
+    <div class="callout"><strong>Formula:</strong> (Net income + D&amp;A − maintenance capex − WC growth − SBC) ÷ Market Cap<br><strong>Test:</strong> OE yield vs. current 10yr Treasury yield — always use live rate</div>
+
+    <div class="section-title" style="margin-top: 8px;">③ Three-Scenario Range</div>
+    <table>
+      <tr><th>Scenario</th><th>Rev CAGR</th><th>Margin</th><th>Prob.</th></tr>
+      <tr><td><span class="tag tag-red">Bear</span></td><td>Flat–2%</td><td>Compresses 200–400bp</td><td>__% </td></tr>
+      <tr><td><span class="tag tag-yellow">Base</span></td><td>Co. historical avg</td><td>Stable ±100bp</td><td>__%</td></tr>
+      <tr><td><span class="tag tag-green">Bull</span></td><td>Top-quartile sector</td><td>Expands 200–400bp</td><td>__%</td></tr>
+    </table>
+    <div class="callout" style="margin-top: 6px;"><strong>Expected value</strong> = probability-weighted average of all three. Not the base case alone.</div>
+
+    <div class="section-title" style="margin-top: 8px;">④ Margin of Safety</div>
+    <table>
+      <tr><th>Confidence</th><th>Typical MoS</th></tr>
+      <tr><td>High (wide moat)</td><td>20–30% discount to base</td></tr>
+      <tr><td>Moderate</td><td>30–50%</td></tr>
+      <tr><td>Low / turnaround</td><td>50%+ or avoid</td></tr>
+    </table>
+  </div>
+
+  <!-- Risk and Sizing -->
+  <div class="card accent-pink">
+    <div class="section-title">Step 5 · Risk &amp; Position Sizing</div>
+    <div class="card-title"><span class="step-badge s5">5</span> Sizing by Conviction</div>
+
+    <table>
+      <tr><th>Conviction</th><th>Durability</th><th>Max Size</th></tr>
+      <tr class="score-row score-high"><td>Very high</td><td>24–30/30</td><td>10–15%</td></tr>
+      <tr class="score-row score-mid"><td>High</td><td>18–23/30</td><td>5–8%</td></tr>
+      <tr class="score-row score-mid"><td>Moderate</td><td>12–17/30</td><td>3–5%</td></tr>
+      <tr class="score-row score-low"><td>Speculative</td><td>&lt;12/30</td><td>1–3%</td></tr>
+    </table>
+    <div class="callout" style="margin-top: 4px;"><strong>Rule:</strong> No single theme/sector &gt;30–35% of portfolio regardless of conviction.</div>
+
+    <div class="section-title" style="margin-top: 8px;">Drawdown Reference</div>
+    <table>
+      <tr><th>Asset Type</th><th>Severe Bear Drawdown</th></tr>
+      <tr><td>Individual small-cap</td><td>−70% to −90%</td></tr>
+      <tr><td>Individual large-cap</td><td>−40% to −70%</td></tr>
+      <tr><td>S&amp;P 500 index</td><td>−50% to −57%</td></tr>
+      <tr><td>High-yield bonds</td><td>−30% to −40%</td></tr>
+      <tr><td>IG bonds</td><td>−10% to −20%</td></tr>
+    </table>
+
+    <div class="section-title" style="margin-top: 8px;">Time-Horizon Matching Test</div>
+    <ul class="checklist">
+      <li>10-yr thesis → funded only with capital not needed for 10+ yrs</li>
+      <li>Position −60%: still liquid for 2+ yrs living expenses without selling?</li>
+      <li>Position −60%: can hold / add — or will you sell at the bottom?</li>
+      <li class="warn">If daily price-checking causes anxiety → position is too large</li>
+    </ul>
+
+    <div class="section-title" style="margin-top: 8px;">Correlation Traps</div>
+    <ul class="checklist">
+      <li class="bad">5 AI semiconductor stocks ≠ diversification (correlation ≈ 1.0 in risk-off)</li>
+      <li class="bad">Long-duration bonds + long-duration growth stocks = rate risk concentration</li>
+      <li class="bad">Multiple "different" thematic ETFs sharing top-10 holdings</li>
+      <li class="ok">Stress test: if top theme −40%, what does whole portfolio do?</li>
+    </ul>
+  </div>
+
+  <!-- Behavioral Pitfalls -->
+  <div class="card accent-green">
+    <div class="section-title">Step 5 · Behavioral Pitfall Inventory</div>
+    <div class="card-title"><span class="step-badge s5">5</span> Largest Return-Killers</div>
+    <table>
+      <tr><th>Pitfall</th><th>Mitigation</th></tr>
+      <tr>
+        <td><strong>Narrative attachment</strong><br><span style="color:var(--muted);font-size:0.72rem">Holding because you argued for it</span></td>
+        <td>Pre-commit to falsifiers; re-read bear case at each review</td>
+      </tr>
+      <tr>
+        <td><strong>Recency bias</strong><br><span style="color:var(--muted);font-size:0.72rem">Extrapolating recent performance</span></td>
+        <td>Review base rates before looking at price chart</td>
+      </tr>
+      <tr>
+        <td><strong>Loss aversion</strong><br><span style="color:var(--muted);font-size:0.72rem">Holding losers to avoid realizing loss</span></td>
+        <td>Decide on forward thesis only, never entry price</td>
+      </tr>
+      <tr>
+        <td><strong>Overconfidence</strong><br><span style="color:var(--muted);font-size:0.72rem">Concentrating after early wins</span></td>
+        <td>Maintain size discipline regardless of P&amp;L</td>
+      </tr>
+      <tr>
+        <td><strong>Confirmation bias</strong><br><span style="color:var(--muted);font-size:0.72rem">Only reading bull arguments</span></td>
+        <td>Steelman the bear case; read short-seller reports</td>
+      </tr>
+      <tr>
+        <td><strong>Anchoring</strong><br><span style="color:var(--muted);font-size:0.72rem">Using entry price as reference</span></td>
+        <td>Evaluate vs. current intrinsic value only</td>
+      </tr>
+      <tr>
+        <td><strong>Action bias</strong><br><span style="color:var(--muted);font-size:0.72rem">Over-trading during volatility</span></td>
+        <td>Pre-set rules for when you will / won't trade</td>
+      </tr>
+      <tr>
+        <td><strong>Illiquidity trap</strong><br><span style="color:var(--muted);font-size:0.72rem">Can't exit without moving price</span></td>
+        <td>Position must be exitable in &lt;10 trading days at avg volume</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ ROW 3: DECISION JOURNAL + PRINCIPLES -->
+<div class="grid-2col">
+
+  <!-- Decision Journal Structure -->
+  <div class="card accent-green">
+    <div class="section-title">Steps 1 &amp; 6 · Decision Journal Sections</div>
+    <div class="card-title"><span class="step-badge s1">J</span> What to Document Before Entry</div>
+    <table>
+      <tr><th>#</th><th>Section</th><th>Key Output</th></tr>
+      <tr><td>1</td><td>Thesis Statement</td><td>2-sentence claim + 4–6 conditions + 3 falsifiers</td></tr>
+      <tr><td>2</td><td>Megatrend Anchoring</td><td>Category + score /30 + disconfirmation risk + probability</td></tr>
+      <tr><td>3</td><td>Durability Summary</td><td>All 6 dimension scores + biggest strength + biggest fragility</td></tr>
+      <tr><td>4</td><td>Valuation Snapshot</td><td>OE yield + reverse-DCF rate + 3-scenario expected value + MoS</td></tr>
+      <tr><td>5</td><td>Risk &amp; Sizing</td><td>Position size + drawdown tolerance + correlation flag + liquidity check</td></tr>
+      <tr><td>6</td><td>Key Assumptions</td><td>4–6 assumptions + what changes your view on each</td></tr>
+      <tr><td>7</td><td>Devil's Advocate</td><td>Steelman bear case — write it as a short seller would present it</td></tr>
+      <tr><td>8</td><td>Decision &amp; Exit Conditions</td><td>Invest/pass + specific exit triggers for thesis break, valuation, weight</td></tr>
+      <tr><td>9</td><td>Review Schedule</td><td>+12 / +24 / +36 / +60 / +120 month dates set in calendar</td></tr>
+      <tr><td>10</td><td>Post-Mortems</td><td>Complete at each review date before looking at performance</td></tr>
+    </table>
+    <div class="callout"><strong>The journal rule:</strong> Re-read your entry before reviewing price performance at every review. Let thesis logic — not price — drive your decisions.</div>
+  </div>
+
+  <!-- Five Core Principles -->
+  <div class="card accent-left">
+    <div class="section-title">Core Principles</div>
+    <div class="card-title"><span class="step-badge s1">∞</span> The Five Pillars</div>
+    <ul class="checklist" style="gap: 12px;">
+      <li>
+        <div>
+          <strong>Process over predictions.</strong><br>
+          <span style="color:var(--muted)">10-year forecasts are almost always wrong in specifics. Good process is more controllable than outcome prediction. Document the process so you can improve it.</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Base rates first.</strong><br>
+          <span style="color:var(--muted)">Before building any bull case, ask: what fraction of companies in this situation historically succeeded? Most disruption stories, turnarounds, and super-cycles disappoint.</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Seek disconfirmation.</strong><br>
+          <span style="color:var(--muted)">Spend at least as much time looking for evidence your thesis is wrong as evidence it is right. A thesis that cannot be falsified is a belief, not an analysis.</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Second-order effects matter.</strong><br>
+          <span style="color:var(--muted)">The first-order effect is usually already priced in. What happens to suppliers, competitors, regulators, and consumer behavior downstream is where insight lives.</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Humility is a feature.</strong><br>
+          <span style="color:var(--muted)">Express views as probability ranges, not certainties. Document key assumptions explicitly so you can track which ones broke — not which ones you rationalized after the fact.</span>
+        </div>
+      </li>
+    </ul>
+    <div class="divider" style="margin: 4px 0;"></div>
+    <div class="section-title">Quick-Start Checklist</div>
+    <ul class="checklist">
+      <li class="ok">Thesis stated in ≤2 sentences before any research</li>
+      <li class="ok">Megatrend score ≥14/30 (or extraordinary evidence documented)</li>
+      <li class="ok">All 6 durability dimensions scored; no dimension at 0–1</li>
+      <li class="ok">Reverse DCF run; implied growth rate placed in historical distribution</li>
+      <li class="ok">Three scenarios with explicit probabilities; expected value computed</li>
+      <li class="ok">Margin of safety matches confidence level</li>
+      <li class="ok">Position size reflects durability score AND valuation margin</li>
+      <li class="ok">Exit conditions written before entry</li>
+      <li class="ok">Review dates in calendar before entry</li>
+      <li class="warn">Devil's advocate section written without softening</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ ROW 4: FILE MAP + SCORING GUIDE -->
+<div class="grid-2col" style="margin-bottom: 0;">
+
+  <div class="card" style="border-top: 2px solid var(--accent);">
+    <div class="section-title">File Reference Map</div>
+    <div class="card-title">All Files &amp; Their Role in Workflow</div>
+    <table>
+      <tr><th>File</th><th>Step</th><th>Primary Output</th></tr>
+      <tr><td><code>SKILL.md</code></td><td>All</td><td>Master workflow; principles; this framework</td></tr>
+      <tr><td><code>megatrends-checklist.md</code></td><td>2</td><td>Secular score /30; disconfirmation risks</td></tr>
+      <tr><td><code>durability-rubric.md</code></td><td>3</td><td>Durability score /30; moat + disruption analysis</td></tr>
+      <tr><td><code>valuation-sanity.md</code></td><td>4</td><td>Reverse DCF; OE yield; 3-scenario; MoS</td></tr>
+      <tr><td><code>risk-and-sizing.md</code></td><td>5</td><td>Position size; drawdown; behavioral pitfalls</td></tr>
+      <tr><td><code>decision-journal-template.md</code></td><td>1 &amp; 6</td><td>Full thesis log; falsifiers; review schedule</td></tr>
+      <tr><td><code>worked-example.md</code></td><td>Reference</td><td>End-to-end fictional example (NovaCure NCIS)</td></tr>
+      <tr><td><code>scoring-template.csv</code></td><td>Tracking</td><td>Structured scoring spreadsheet for all analyses</td></tr>
+      <tr><td><code>cheatsheet.html</code></td><td>Reference</td><td>This one-pager</td></tr>
+    </table>
+  </div>
+
+  <div class="card" style="border-top: 2px solid var(--accent2);">
+    <div class="section-title">Scoring Scale Reference</div>
+    <div class="card-title">Universal 0–5 Rubric (all dimensions)</div>
+    <table>
+      <tr><th>Score</th><th>Meaning</th><th>What It Looks Like</th></tr>
+      <tr class="score-row score-low"><td>0</td><td>Severe threat</td><td>Moat actively eroding; disruption occurring; debt unsustainable</td></tr>
+      <tr class="score-row score-low"><td>1</td><td>Significant concern</td><td>Weak competitive position; poor management track record</td></tr>
+      <tr class="score-row score-mid"><td>2</td><td>Below average</td><td>Some concern; partial mitigant; multiple things must go right</td></tr>
+      <tr class="score-row score-mid"><td>3</td><td>Average</td><td>Reasonable but not differentiated; should survive</td></tr>
+      <tr class="score-row score-high"><td>4</td><td>Above average</td><td>Clearly positive; hard to replicate near-term; documented evidence</td></tr>
+      <tr class="score-row score-high"><td>5</td><td>Exceptional</td><td>Rare, durable, compounding advantage — requires specific evidence</td></tr>
+    </table>
+    <div class="callout" style="margin-top: 8px;"><strong>Calibration:</strong> 5s should be rare. If every dimension is a 4 or 5, re-examine your standards. Each score above 3 should be backed by specific, quantifiable evidence — not general impressions.</div>
+    <div class="section-title" style="margin-top: 8px;">Key Clinical Trial Base Rates (Biotech)</div>
+    <table>
+      <tr><th>Indication</th><th>Ph. I → Approval Rate</th></tr>
+      <tr><td>All indications (avg)</td><td>~10–15%</td></tr>
+      <tr><td>Oncology</td><td>~5–7%</td></tr>
+      <tr><td>CNS disorders</td><td>~7–9%</td></tr>
+      <tr><td>Infectious disease</td><td>~20–25%</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ FOOTER -->
+<div class="footer">
+  <strong>IMPORTANT DISCLAIMER — READ BEFORE USE:</strong> This cheatsheet and all associated decade-investing-skill files are provided for <strong>educational and informational purposes only</strong>. Nothing here constitutes personalized financial advice, a recommendation to buy or sell any security, a solicitation to invest in any fund, or a guarantee or prediction of any investment outcome. Investing in securities involves <strong>substantial risk, including the possible loss of your entire principal</strong>. Past performance does not predict future results. The frameworks are general educational tools — they do not account for your personal financial situation, tax circumstances, risk tolerance, liquidity needs, or investment objectives. <strong>Before making any investment decision, consult a qualified, licensed financial advisor who understands your complete personal and financial situation.</strong> The authors accept no liability for investment decisions made using this framework.
+</div>
+
+</body>
+</html>
