@@ -1,0 +1,285 @@
+{
+  "test": [
+    {
+      "slug": "nvidia",
+      "title": "英伟达：拿着锤子找钉子的并行计算信仰者",
+      "en_title": "NVIDIA",
+      "category": "AI",
+      "period": "2024年 第六期",
+      "author": "Aegon&Hongbo",
+      "ground_truth_chars": 34316
+    },
+    {
+      "slug": "microsoft",
+      "title": "从AIGC角度看微软",
+      "en_title": "Microsoft",
+      "category": "AI",
+      "period": "2023年 第九期",
+      "author": "Hongbo",
+      "ground_truth_chars": 34875
+    },
+    {
+      "slug": "benchmark",
+      "title": "Benchmark基金研究",
+      "en_title": "benchmark",
+      "category": "投资",
+      "period": "2023年 第七期",
+      "author": "Liuhao&Jelly",
+      "ground_truth_chars": 27000
+    },
+    {
+      "slug": "sogo-shosha",
+      "title": "日本商社：穿越周期的百年老店",
+      "en_title": "sogo shosha",
+      "category": "消费",
+      "period": "2024年 第八期",
+      "author": "Victor",
+      "ground_truth_chars": 20298
+    },
+    {
+      "slug": "eth-layer2",
+      "title": "基于Layer2的以太坊生态研究",
+      "en_title": "layer2",
+      "category": "Crypto",
+      "period": "2024年 第二期",
+      "author": "Hongbo&Fred",
+      "ground_truth_chars": 26855
+    },
+    {
+      "slug": "coinbase",
+      "title": "Coinbase不仅仅是交易所",
+      "en_title": "coinbase",
+      "category": "Crypto",
+      "period": "2024年 第四期",
+      "author": "Hongbo&CC",
+      "ground_truth_chars": 28625
+    },
+    {
+      "slug": "marathon",
+      "title": "从Marathon Digital看比特币算力行业的发展",
+      "en_title": "marathon",
+      "category": "Crypto",
+      "period": "2024年 第二期",
+      "author": "Hongbo",
+      "ground_truth_chars": 26501
+    }
+  ],
+  "train": [
+    {
+      "slug": "public-chain",
+      "title": "再论公链",
+      "en_title": "public chain",
+      "category": "Crypto",
+      "period": "2025年 第四期",
+      "author": "Haibei&Chuang",
+      "ground_truth_chars": 28203
+    },
+    {
+      "slug": "public-chain-22-1",
+      "title": "公链现状及发展趋势初探（上）",
+      "en_title": "public chain",
+      "category": "Crypto",
+      "period": "2022年 第十期",
+      "author": "Hui",
+      "ground_truth_chars": 9786
+    },
+    {
+      "slug": "technology-capital",
+      "title": "技术革命与金融资本研究",
+      "en_title": "technology",
+      "category": "投资",
+      "period": "2024年 第十二期",
+      "author": "Hongbo&Darcie&Yuchen&Victor",
+      "ground_truth_chars": 8874
+    },
+    {
+      "slug": "meta",
+      "title": "从AI的角度来看Meta",
+      "en_title": "META",
+      "category": "AI",
+      "period": "2025年 第一期",
+      "author": "Yuqian",
+      "ground_truth_chars": 49471
+    },
+    {
+      "slug": "car-online",
+      "title": "汽车在线",
+      "en_title": "Car Online",
+      "category": "消费",
+      "period": "2022年 第九期",
+      "author": "Dream",
+      "ground_truth_chars": 18304
+    },
+    {
+      "slug": "google",
+      "title": "Google是不是要被全端走？",
+      "en_title": "google",
+      "category": "AI",
+      "period": "2025年 第三期",
+      "author": "Yuqian&Hongbo&Ziyang",
+      "ground_truth_chars": 33304
+    },
+    {
+      "slug": "bit-economy",
+      "title": "比特经济及其三种效应探讨",
+      "en_title": "economy",
+      "category": "投资",
+      "period": "2025年 第二期",
+      "author": "Yuqian",
+      "ground_truth_chars": 18895
+    },
+    {
+      "slug": "ai-compute-storage",
+      "title": "AI 模型的计算与存储",
+      "en_title": "AI Compute & Storage",
+      "category": "AI",
+      "period": "2026 年 5 月",
+      "author": "未来十年 AI 研究组",
+      "ground_truth_chars": 6874
+    },
+    {
+      "slug": "compute-fundamentals",
+      "title": "AI 算力与模型基础",
+      "en_title": "AI Compute & Model Fundamentals",
+      "category": "AI",
+      "period": "2026 年 5 月",
+      "author": "未来十年 AI 研究组",
+      "ground_truth_chars": 15986
+    },
+    {
+      "slug": "coinbase-update",
+      "title": "Coinbase公司分析",
+      "en_title": "coinbase",
+      "category": "Crypto",
+      "period": "2022年 第二期",
+      "author": "DECADEX",
+      "ground_truth_chars": 21349
+    },
+    {
+      "slug": "wechat-channels",
+      "title": "视频号直播电商研究",
+      "en_title": "wechat",
+      "category": "消费",
+      "period": "2024年 第七期",
+      "author": "Yuchen",
+      "ground_truth_chars": 13710
+    },
+    {
+      "slug": "electric-vehicle",
+      "title": "新能源汽车整车赛道小结及复盘",
+      "en_title": "ElectricVehicle",
+      "category": "消费",
+      "period": "2023年 第四期",
+      "author": "Tony",
+      "ground_truth_chars": 10844
+    },
+    {
+      "slug": "self-driving",
+      "title": "大模型与自动驾驶",
+      "en_title": "self driving",
+      "category": "AI",
+      "period": "2023年 第十一期",
+      "author": "Huayang",
+      "ground_truth_chars": 5883
+    },
+    {
+      "slug": "coinbase-financial-update",
+      "title": "Coinbase公司更新",
+      "en_title": "coinbase",
+      "category": "Crypto",
+      "period": "2023年 第三期",
+      "author": "Dream",
+      "ground_truth_chars": 12905
+    },
+    {
+      "slug": "ethereum",
+      "title": "以太坊的进化之路",
+      "en_title": "ethereum",
+      "category": "Crypto",
+      "period": "2024年 第九期",
+      "author": "Shiqi&CC&Hongbo",
+      "ground_truth_chars": 11645
+    },
+    {
+      "slug": "coinbase-Robinhood-2025",
+      "title": "美国现货分发渠道分析",
+      "en_title": "EXCHANGE",
+      "category": "Crypto",
+      "period": "2025年 第六期",
+      "author": "YJ & Lizzie & HB & Chuang",
+      "ground_truth_chars": 23968
+    },
+    {
+      "slug": "endowment-fund",
+      "title": "捐赠基金&家办现状分析及对策",
+      "en_title": "ENDOWMENT FUND",
+      "category": "投资",
+      "period": "2025年 第八期",
+      "author": "Meghan & Chuang",
+      "ground_truth_chars": 38281
+    },
+    {
+      "slug": "hyperliquid-revision",
+      "title": "Hyperliquid研究修订版",
+      "en_title": "Hype Revision",
+      "category": "Crypto",
+      "period": "2025年 第九期修订",
+      "author": "Haibei",
+      "ground_truth_chars": 3240
+    },
+    {
+      "slug": "2025-12-16",
+      "title": "从传统金融交易基建的角度理解Hyperliquid",
+      "en_title": "HYPERLIQUID",
+      "category": "Crypto",
+      "period": "2025年 第九期",
+      "author": "haibei&vison",
+      "ground_truth_chars": 57833
+    },
+    {
+      "slug": "a16z",
+      "title": "A16z基金研究",
+      "en_title": "AH Capital",
+      "category": "投资",
+      "period": "2023年 第八期",
+      "author": "Hongbo&Kenny&Fred",
+      "ground_truth_chars": 31800
+    },
+    {
+      "slug": "coinbase-onboard",
+      "title": "从合规的角度看Coinbase",
+      "en_title": "coinbase",
+      "category": "Crypto",
+      "period": "2023年 第十期",
+      "author": "Hongbo&Youyuan&Wanjun",
+      "ground_truth_chars": 30360
+    },
+    {
+      "slug": "ark",
+      "title": "ARK基金研究",
+      "en_title": "ARK",
+      "category": "投资",
+      "period": "2024年 第十期",
+      "author": "Darcie&Kevin",
+      "ground_truth_chars": 28123
+    },
+    {
+      "slug": "public-chain-22-2",
+      "title": "公链现状及发展趋势初探（下）",
+      "en_title": "public chain",
+      "category": "Crypto",
+      "period": "2022年 第十一期",
+      "author": "Hui&Yuxin",
+      "ground_truth_chars": 25268
+    },
+    {
+      "slug": "generative-ai",
+      "title": "对大模型行业的阶段性理解与讨论",
+      "en_title": "generative ai",
+      "category": "AI",
+      "period": "2025年 第五期",
+      "author": "Ziyang&Yubo&Hongbo&Yuqian",
+      "ground_truth_chars": 36275
+    }
+  ]
+}

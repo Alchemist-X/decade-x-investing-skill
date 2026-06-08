@@ -1,238 +1,142 @@
 ---
-name: decade-investing
+name: decade-x-investing
 description: >
-  A rigorous, process-driven framework for long-horizon (10-year) investment research — covering megatrend identification
-  and scoring, durability rubric across six dimensions (moat, TAM, tailwind, balance sheet, management, disruption risk),
-  reverse-DCF valuation sanity, risk and position sizing, and structured decision journaling. Use when asked about
-  10-year investment thesis, decade-long investing, long-horizon stock research, thematic or megatrend analysis,
-  secular trend durability, durable business evaluation, valuation sanity check, position sizing for long-term holds,
-  or building a decision journal for an investment. Includes a worked example, reusable scoring template, and
-  visual one-pager cheatsheet. Educational research framework only — not personalized financial advice.
+  Produce DecadeX-style (未来十年投资学堂 / decadex.org) long-horizon investment research — applying DecadeX's
+  own named frameworks (不可能三角, 北极星指标, 价值创造vs价值捕获, 流量×流动性, 技术革命与金融资本, 资产渗透率,
+  尽调十问, 三情景概率加权估值, etc.) across Crypto (公链/交易所/稳定币/DeFi), AI (大模型/算力/广告平台),
+  consumer (汽车/直播电商/商社), and funds/capital (VC/捐赠基金/技术周期). Use when asked for DecadeX-style or
+  未来十年-style research, a 10-year/decade investment thesis, a deep-dive on a company/sector/asset in those domains,
+  to apply a named DecadeX framework, to value a token/stock the DecadeX way, or to write a report in DecadeX's
+  理解更新→核心结论→框架展开 structure. Educational — distilled from DecadeX public research, NOT financial advice.
 ---
 
-# Decade Investing Skill
+# DecadeX Investing Skill
 
-> **DISCLAIMER — READ FIRST:** This skill is an educational research process framework. Nothing here constitutes personalized financial advice, a recommendation to buy or sell any security, or a guarantee of any outcome. Investing involves substantial risk, including the possible loss of your entire principal. Past performance does not predict future results. All analysis produced using this skill is for educational and informational purposes only. Before making investment decisions, consult a qualified, licensed financial advisor who understands your personal situation.
+> **DISCLAIMER:** This skill distills the *research methodology* of DecadeX (未来十年投资学堂, decadex.org) from its public reports, for educational purposes. It is NOT financial advice, NOT a buy/sell recommendation, and NOT affiliated with or endorsed by DecadeX. All investing involves risk of total loss. Reproducing a house's reasoning style does not make its conclusions correct. Consult a licensed advisor.
 
 ---
 
 ## When to Use This Skill
 
-Use this skill when you need to:
+Use this when the user wants research that *thinks like DecadeX*:
 
-- Research whether a theme, sector, company, or asset class has genuine 10-year durability.
-- Stress-test an investment thesis against disconfirming evidence and second-order effects.
-- Understand what a current market price requires you to believe (reverse-DCF sanity check).
-- Think through position sizing, drawdown tolerance, correlation, and behavioral risk.
-- Build a decision journal entry so future-you can separate "thesis broke" from "normal volatility."
-- See a worked, end-to-end example of the framework applied to a fictional company.
+- A long-horizon (10-year / 未来十年) thesis on a company, sector, token, or asset class.
+- A deep-dive in DecadeX's home turf: **Crypto** (public chains, exchanges, stablecoins, DeFi, L2), **AI** (大模型/LLMs, compute, ad platforms), **Consumer** (autos/EVs, livestream e-commerce, trading platforms), **Funds/Capital** (VC/endowment analysis, technology-cycle macro).
+- Applying a *named* DecadeX framework (不可能三角, 北极星指标, REV/GDP 税权, 价值创造vs价值捕获, 流量×流动性, 资产渗透率, 尽调十问, 技术革命与金融资本…).
+- Valuing a token or stock the DecadeX way (三情景概率加权 PS/PE + 监管折价).
+- Writing a report in the DecadeX house structure.
 
-**Do not use this skill** to get a buy/sell recommendation, a specific price target, or portfolio construction advice tailored to your personal circumstances.
-
----
-
-## Quick-Start Checklist
-
-Before finishing any analysis with this framework, verify:
-
-- [ ] Thesis stated in ≤2 sentences before any research begins
-- [ ] Megatrend score ≥14/30 — or extraordinary evidence documented for why the threshold doesn't apply
-- [ ] All 6 durability dimensions scored; no single dimension at 0 or 1 without explicit flagging
-- [ ] Reverse DCF run; implied growth rate placed in historical distribution (top 5%? top 25%? median?)
-- [ ] Three scenarios built with explicit probability weights; expected value computed (not just base case)
-- [ ] Margin of safety vs. expected value matches confidence level (reference valuation-sanity.md thresholds)
-- [ ] Position size calibrated to durability score AND valuation margin (not either alone)
-- [ ] Exit conditions written before entry: thesis-break falsifiers, valuation ceiling, weight threshold
-- [ ] Review dates set in calendar before entry: +12, +24, +36, +60, +120 months
-- [ ] Devil's advocate section written without softening — steelman the bear case
+**Do not** use it to issue a personalized buy/sell call or a precise price target as advice.
 
 ---
 
-## Core Principles
+## The DecadeX Worldview (apply these by default)
 
-1. **Process over predictions.** Ten-year forecasts are almost always wrong in specifics. Good process — identifying durable tailwinds, avoiding fatal risks, sizing bets appropriately — is more controllable than predicting outcomes. Document the process so you can improve it through iteration.
+These house priors recur across every report and are the *spine* of DecadeX reasoning:
 
-2. **Base rates first.** Before building a bull case, ask: "What is the historical base rate for this kind of investment thesis working out?" Most disruption stories, turnaround stories, and commodity super-cycles disappoint. Fewer than 5% of public companies sustain 20%+ revenue growth for a full 10 years.
-
-3. **Seek disconfirmation.** Spend at least as much time looking for evidence your thesis is wrong as looking for evidence it is right. A thesis that cannot be falsified is a belief, not an analysis. Pre-commit to specific, observable falsifiers before entering any position.
-
-4. **Second-order effects matter.** The first-order effect is usually already priced in. What happens downstream — to suppliers, competitors, regulators, consumer behavior — is where genuine insight lives. The AI infrastructure spending boom's first-order winner is obvious; the second-order effects on power grids, cooling, data center REITs, and AI application economics are less priced.
-
-5. **Humility is a feature.** Express views as probability ranges, not certainties. Document key assumptions explicitly so you can track which ones broke — rather than rationalizing outcomes in hindsight.
-
----
-
-## End-to-End Research Workflow
-
-### Step 1 — Frame the Thesis Clearly
-
-State, in two sentences or fewer:
-- What is the thing you are researching (asset, company, sector, theme)?
-- What is the core claim — why should it be worth significantly more in 10 years?
-
-Open **`references/decision-journal-template.md`** and fill in Sections 1 through the thesis statement before doing any further research. This creates a commitment to a specific, falsifiable claim rather than a general positive impression.
-
-**Common failure mode:** Doing all the research first, then writing the thesis to fit what you found. This anchors the thesis to your research path rather than to a testable proposition.
+1. **从第一性原理出发 (first principles).** Start from "what is this thing, really?" Re-derive the category before analyzing it. (Crypto's essence is *asset*, not traffic; an exchange is "a one-stop browser wrapped as an exchange"; a model is "a logic-output machine"; a car after electrification is "still a car".)
+2. **Crypto = the upgrade/fusion of TradFi, not Web3.** Asset-lens, not internet-lens. Adoption = **资产渗透率 (asset penetration)**, not user count. Crypto sits at the internet's ~1995-1998 moment.
+3. **价值创造 ≠ 价值捕获 (value creation vs capture).** A thing can create huge value yet the *token/equity* captures little (the "Ethereum ≠ ETH" case). Always ask both, separately.
+4. **流量 × 流动性 (traffic × liquidity) is a MULTIPLIER, not a sum.** Value concentrates at the traffic entrance and the liquidity reservoir; whoever aggregates both wins.
+5. **北极星指标 (one North Star metric).** Force the analysis down to the single metric that decides the category (asset penetration; MTU; funded-users+AUM; 独立访客; GMV; 入金用户数…).
+6. **穿越牛熊 / cyclicality.** Crypto and tech don't go up in a straight line — model "the next cycle," not a linear extrapolation. The validity test is the **bear-market stress test** (does non-subsidized TVL + DAU hold?).
+7. **资产先于用户 (assets precede users).** The binding constraint today isn't users, it's *new assets*. 搏流量靠资产、保留存靠叙事、真用户靠应用.
+8. **品类定义者 (category-definer) earns the growth dividend.** Back the definer of a track; in a new tech cycle it's usually a *new* company, not the incumbent's extension.
+9. **理解会更新 (versioned self-critique).** Treat every thesis as a living object; openly mark what prior versions got ✓ and ✗.
+10. **Educational humility.** Conclusions are conditional, banded, and falsifiable — never certain.
+11. **Period-lock + recover the human's ACTUAL thesis (the #1 discipline).** Reason from the data available *at the report's date*; do **not** impose a later, contrarian, or inverted conclusion the report never reached. DecadeX is often *bullish-with-a-number*, not reflexively contrarian-bearish. Recover the house's real conclusion polarity, its real North Star metric, and its documented strategy — do not substitute a self-invented metric or manufacture a contrarian inversion. (See `methodology.md` §0a.)
+12. **Native-framework discovery before generic toolkits.** Infer the report's OWN organizing spine from the subject's history (e.g. trading houses → five-function build-up; VC → 找得到/看得清/投得进/帮得上 + the partner's own scoring models; incumbents → "能否再造操作系统"). If the title is a question, lead with and answer it. (See `methodology.md` §0b.)
+13. **Hard business anchors before jargon.** Do the financial teardown (installed base/share, segment revenue & margin, per-unit pricing, native ratios, real fund IRR ladder, BOM) *first*. Jargon-rich, data-poor analysis is penalized.
 
 ---
 
-### Step 2 — Megatrend Validation
+## The DecadeX Research Workflow
 
-Open **`references/megatrends-checklist.md`**.
+DecadeX reports follow a consistent arc. Reproduce it in this order. (Full process in `references/methodology.md`; output shape in `references/writing-template.md`.)
 
-Score each of the six categories (Demographics, Energy Transition, Compute/AI, Biotechnology, Geopolitical Restructuring, Financial/Macro). Work through the disconfirmation prompts for every relevant category — do not skip them.
+### Step 0 — Period-lock + native-spine + title-question (do this first)
+**Pin the report's date** and reason only from data known then; do not impose a later/contrarian/inverted thesis (see worldview #11). **Infer the report's own native framework** from the subject's history before reaching for generic toolkits (see #12). If the **title is a question** (能不能 benchmark？/ 能否再造操作系统？), lead with and explicitly answer it.
 
-Key questions:
-- Is this demographic, energy, compute, or biotech-driven — or is it sentiment/narrative-driven?
-- Would this trend have been plausible and predictable 10 years ago? If not, why is a 10-year prediction reliable now?
-- What would have to be true for the trend to reverse within 5 years?
+### Step 1 — 理解更新 (Understanding Update / versioned self-critique)
+Open with how the understanding has *changed*. If prior versions exist, tabulate V1→Vn with ✓ (right) / ✗ (wrong) marks. State the single biggest reframe up front (e.g. "公链的主要矛盾不是去中心化，而是资产发行效率"). This is the signature DecadeX opening. Recover the *human's* non-obvious insight — do not manufacture your own contrarian one of the opposite valence.
 
-**Interpretation:**
-- 22–30: Strong secular anchoring — proceed to durability scoring.
-- 14–21: Mixed — thesis partially secular, partially cyclical. Identify the cyclical component explicitly.
-- Below 14: Likely cyclical or narrative-driven. Require extraordinary evidence before proceeding.
+### Step 2 — 第一性原理 + 重新定义品类 (First principles, redefine the category)
+Re-derive what the thing *is* before judging it. Pick the right lens (finance not internet; asset not traffic; logic-machine not chatbot). Name the **北极星指标**.
 
----
+### Step 3 — 框架展开 (Deploy the named frameworks)
+Select the cross-cutting frameworks (below) + the sector frameworks from the matching `references/frameworks-*.md`. Each framework must be *applied with numbers*, not just named. Anchor on hard ratios and correlations.
 
-### Step 3 — Durability Scoring
+### Step 4 — 竞争格局 + 头对头对标 (Competitive landscape, head-to-head)
+Build the apples-to-apples comparison table (the report's backbone) with a benchmark anchor (e.g. everything as "% of Binance"; new forces vs Tesla's historical curve; Gemini vs ChatGPT layer-by-layer).
 
-Open **`references/durability-rubric.md`**.
+### Step 5 — 尽调十问 (Ten DD questions: β / α / Timing)
+Score the company/asset on the fixed rubric: **β** = 行业增速, 行业规模; **α** = 竞争优势, 用户&产品, 商业模式, 运营, 组织&文化, 成长潜力; **Timing** = why hasn't the market found the value yet.
 
-Score the specific asset or company on each of six dimensions using the 0–5 rubric. Sum the scores. This surfaces where the thesis is structurally strong and where it is fragile — it does not produce a buy/sell signal.
+### Step 6 — 估值 (Scenario valuation) + 风险
+Bear/Base/Bull, each: driver metric → revenue → PS or PE multiple → discount (e.g. 监管折价) → probability-weight to an expectation. Use **PE-style** when ~all revenue buys back the token / near-100% margin; otherwise **PS**. Give banded targets, not a point. Then list the black-swan / disconfirming risks.
 
-**The universal scoring scale (applies to all dimensions):**
-- 5: Exceptional — rare, durable, well-documented advantage; requires specific evidence
-- 4: Above average — clearly positive, hard to replicate near-term
-- 3: Average — reasonable but not differentiated
-- 2: Below average — some concern, partial mitigant
-- 1: Significant concern — material weakness
-- 0: Severe threat — moat is actively eroding, disruption is occurring
-
-**Areas requiring particular scrutiny:**
-- **Disruption risk** — most chronically underweighted factor at a 10-year horizon; Fortune 500 average lifespan has fallen from 67 years (1920s) to ~15 years (2020s)
-- **Capital allocation discipline** — compounding depends on this more than on current business quality
-- **Balance sheet resilience** — a 10-year thesis must survive 2–3 recessions; stress-test for revenue −30%
-
-**Score interpretation:**
-- 24–30: High conviction on durability
-- 16–23: Moderate — meaningful fragilities; size conservatively
-- 8–15: Low durability — avoid or require very large discount
-- Below 8: Severe concerns — thesis as stated is fragile
-
-**Minimum bar:** Any single dimension at 0 or 1 is a thesis-threatening concern regardless of total score.
+### Step 7 — 核心结论 (House conclusions)
+Close with a numbered list of strong, conditional, falsifiable conclusions — the DecadeX deliverable.
 
 ---
 
-### Step 4 — Valuation Sanity Check
+## Cross-Cutting Named Frameworks (recur across sectors)
 
-Open **`references/valuation-sanity.md`**.
+These are the frameworks that appear in *multiple* domains. Apply them everywhere relevant.
 
-**The cardinal rule: derive intrinsic value from first principles BEFORE looking at the current market price.** Anchoring to price and working backward to justify it is one of the most common and expensive valuation errors.
-
-Key frameworks:
-1. **Reverse DCF:** What revenue growth and margin expansion does the current price implicitly require? Compare to historical base rates for this sector.
-2. **Owner Earnings Yield:** Compare to current (live, not stale) risk-free rate. Always adjust for stock-based compensation — it is real dilution.
-3. **Three-Scenario Range:** Bear / Base / Bull with explicit probability weights. Expected value = weighted average of all three, not base case alone.
-4. **Margin of Safety:** Gap between expected value and current price. High-confidence businesses need 20–30% discount; lower confidence needs 30–50%+.
-
-**Reference base rates:**
-- S&P 500 median 10-year revenue CAGR: 5–7%
-- Top-quartile growers: 12–15%
-- Top-decile growers: 18–22%
-- Companies sustaining 20%+ CAGR for 10 years: fewer than 5% of public companies
-
-If the current price requires top-5% historical performance, the margin of safety is thin — not necessarily wrong, but name it explicitly.
-
----
-
-### Step 5 — Risk and Sizing
-
-Open **`references/risk-and-sizing.md`**.
-
-Position sizing calibrated to both durability score and valuation margin:
-- Very high conviction (durability 24–30, adequate MoS): up to 10–15% of investable portfolio
-- High conviction (18–23): 5–8%
-- Moderate (12–17): 3–5%
-- Speculative (<12): 1–3%
-- No single theme/sector: max 30–35% regardless of conviction
-
-Before finalizing size, answer three questions:
-1. If this position falls 60%, can I hold without forced selling or emotional destabilization?
-2. Does this position's time horizon match my actual liquidity needs?
-3. In a scenario where my largest theme drops 40%, what does my overall portfolio do?
-
-Run the behavioral pitfall inventory against your specific situation. Narrative attachment and recency bias are the highest-probability failure modes for long-horizon investors.
-
----
-
-### Step 6 — Log the Decision
-
-Return to **`references/decision-journal-template.md`** and complete every section including:
-- All scores from Steps 2–4
-- Exit conditions (thesis-break falsifiers, valuation ceiling, portfolio weight threshold, time stop)
-- Review schedule with calendar reminders (+12, +24, +36, +60, +120 months)
-
-**The journal rule:** At every review date, re-read your original entry before looking at price performance. Let thesis logic — not price — drive your decisions.
+| Framework | One-line | Where it lives |
+|---|---|---|
+| **不可能三角 (trilemma)** | Pick 2 of 3; DecadeX adds a *priority ordering* + scenario-dependence | crypto, AI (model triangle), stablecoins |
+| **北极星指标 (North Star)** | Collapse the analysis to one decisive metric | every report |
+| **价值创造 vs 价值捕获** | Strong creation can coexist with weak capture (Ethereum≠ETH) | crypto, AI |
+| **流量 × 流动性 (multiplier)** | Value = traffic entrance × liquidity reservoir | crypto, AI ad platforms, consumer |
+| **资产渗透率 (asset penetration)** | Adoption = on-chain assets / global assets (the "1995" timer) | crypto, funds |
+| **技术革命与金融资本 (Perez cycle)** | ~50yr cycle: 导入(爆发+狂热)→展开(协同+成熟); 基础设施→神器→衍生应用; 渗透率>5% trigger | macro, AI, autos, funds |
+| **尽调十问 (β/α/Timing)** | Fixed DD scorecard splitting industry-beta from company-alpha | every company report |
+| **三情景概率加权估值** | Bear/Base/Bull × driver → multiple → discount → expectation | every valuation |
+| **穿越牛熊 / bear-market stress test** | Real demand = non-subsidized TVL + DAU surviving the bear | crypto, consumer |
+| **品类定义者 (category-definer)** | Back the track's definer; new cycle ⇒ new company | every sector |
+| **能力圈映射 (circle of competence)** | A fund's returns = founders' competence circle mapped to markets | funds |
+| **收单/执行/清结算分层 (settlement-stack layering)** | Decompose any trading-intermediary into broker/exchange/clearing | crypto exchanges, funds |
+| **再造操作系统 / 重构流量入口 (rebuild-the-OS north star)** | Incumbent platforms: rebuild OS ⇒ ~5x; fail ⇒ max ~3x (weight 70% 端重构 / 30% 生态) | AI incumbents (MSFT/Google/Meta) |
+| **场景 >> 数据 >> 算法 >> 算力 (LLM competition four-dimensions)** | Priority-ranked head-to-head scoring ⇒ "who overtakes whom in 3-5yr" | AI giants |
+| **找得到/看得清/投得进/帮得上 (VC value-chain spine)** | Mandatory four-stage skeleton for any fund/VC study, + the partner's OWN scoring models | funds |
+| **五大功能 sequential-evolution (商权 / 正反馈+自组织)** | Trading-house / conglomerate native spine; static + dynamic moat | conglomerates |
+| **杠杆比率回归 (leverage-ratio regression)** | Miner equity return = k × BTC return (bull/bear slopes); the bullish-with-a-number call | BTC miners |
+| **资本生命周期 (cash-cow/capital-killer taxonomy)** | Classify the business; capital-killer→cash-cow = the valuation-regime change | conglomerates, capex-heavy |
+| **跨境融资与FX机制 (cross-border financing/FX)** | Reconstruct a famous investor's actual funding structure (bond-issuance arbitrage + liability-currency hedge) | cross-border value investing |
 
 ---
 
 ## How to Use the Reference Files
 
-| File | Purpose | Use in Step |
+| File | What it gives you | Use in |
 |---|---|---|
-| `references/megatrends-checklist.md` | Validate secular trend vs. cyclical vs. fad | Step 2 |
-| `references/durability-rubric.md` | Score asset/company durability on 6 dimensions | Step 3 |
-| `references/valuation-sanity.md` | Sanity-check valuation; reverse DCF; MoS | Step 4 |
-| `references/risk-and-sizing.md` | Position sizing, correlation, behavioral pitfalls | Step 5 |
-| `references/decision-journal-template.md` | Log thesis, assumptions, exit conditions, reviews | Steps 1 & 6 |
-| `references/worked-example.md` | Full end-to-end fictional example (NCIS) | Learning reference |
-| `references/scoring-template.csv` | Reusable structured scoring sheet for all analyses | Ongoing tracking |
-| `cheatsheet.html` | Single-page visual reference — all frameworks at a glance | Quick reference |
+| `references/methodology.md` | The end-to-end DecadeX research + writing *process* (analytical moves, data-anchor discipline, versioned self-critique) — **§0a period-lock/thesis-polarity, §0b native-framework discovery** | All steps |
+| `references/frameworks-crypto.md` | Crypto frameworks: trilemma re-ordering, protocol-vs-application split, REV/GDP 税权, L1=主权货币, settlement-stack, exchange 三分类 (+ Coinbase bull/bear by date, 地域事实性垄断, 合规四维, 银行收入拆解), stablecoin trilemma, PerpDex, **L1×L2 complementary-vs-competitive (period-locked)**, **BTC-miner leverage-regression / 减半周期 / P/B**, asset-lifecycle, Crypto 第一性原理/记账范式 | Crypto deep-dives |
+| `references/frameworks-ai.md` | AI frameworks: 大模型=逻辑输出机器, Pre×Post×TTS, Scaling Law, ad-platform revenue decomposition, Core/Gen AI (β/α), AI+ vs +AI, Y=M·X compute lens; **incumbent-platform §N (再造操作系统 north star, 场景>>数据>>算法>>算力, OpenAI deal mechanics, 开源vs闭源, PS valuation track)**; **hardware-monopolist §O (锤子/收税官/周期股, GPU demand sizing, BOM/decoupling)** | AI deep-dives |
+| `references/frameworks-investing.md` | Funds/capital/macro: 技术革命与金融资本, 能力圈映射, 幂数定律, Vintage Year, LP三诉求, 安全边际, 渗透率TAM; **VC spine 找得到/看得清/投得进/帮得上 + partner scoring models + EIR + 反偏见流程 + 对中国VC启示 + AUM随市场移动**; **sogo-shosha §H (五大功能/商权/资本生命周期/Buffett yen-bond FX机制)** | Fund & macro deep-dives |
+| `references/frameworks-consumer.md` | Consumer: 硬件→SaaS迁移, 两阶段时点, 供给侧霸主更迭, 大单品/车海, 渗透率+哑铃→纺锤, 直播电商=沉浸式广告, GMV双路径, 组织架构→渗透率 | Consumer deep-dives |
+| `references/report-index.md` | The DecadeX house knowledge base — one line per report; cite/match against it | Grounding & precedent |
+| `references/writing-template.md` | The DecadeX report skeleton to reproduce | Drafting |
+| `cheatsheet.html` | Visual one-pager of the frameworks | Quick reference |
 
 ---
 
-## Using the Scoring Template (`references/scoring-template.csv`)
+## Quick Quality Bar (before finishing)
 
-The CSV scoring template provides a structured, field-by-field record for every investment thesis you analyze. It covers:
-
-- **Metadata:** Date, asset, type, idea source (track your sourcing quality over time)
-- **Megatrend scores:** All 6 categories with notes and disconfirmation probability
-- **Durability scores:** All 6 dimensions with moat type, TAM penetration, insider ownership, and disruption vector
-- **Valuation:** Owner earnings yield (SBC-adjusted), implied growth rate, all three scenario values and probabilities, expected value, margin of safety
-- **Conviction and sizing:** Derived position size from combined conviction level
-- **Decision and exit conditions:** Written before entry
-- **Post-mortem:** Return at each review date; self-assessment score
-
-**How to use it:** Copy the CSV into a spreadsheet or plain-text editor. Fill one complete entry per thesis. Archive completed entries — reviewing them annually to identify systematic biases in your analysis is one of the highest-ROI activities available to a long-horizon investor.
-
----
-
-## The Worked Example
-
-**`references/worked-example.md`** applies the full framework to **NovaCure Industrial Systems (NCIS)** — a fictional, composite company invented purely to demonstrate the framework.
-
-**What it shows:**
-- How to write a two-sentence thesis and derive falsifiers
-- How a realistic megatrend scoring exercise looks (including where scores are limited)
-- How to score durability dimensions with specific evidence and disconfirmation reasoning
-- How to run the reverse-DCF and discover that a quality business can still be priced with negative margin of safety
-- How the decision journal entry and sizing decision derive from all prior steps
-- Why a good thesis can still lead to a "Monitor — do not invest at current price" decision
-
-**Important:** NovaCure does not exist. All figures are invented. This is not research on any real company.
+- [ ] **Period-locked**: reasoned from the report's date; did NOT impose a later/contrarian/inverted thesis; recovered the human's actual conclusion *polarity* and *North Star metric* (not a self-invented one).
+- [ ] Used the report's **native framework spine** (and answered the title-question if the title is one), not only the generic toolkit.
+- [ ] Did the **hard business teardown** (financials/share/ratios/real fund-IRR ladder/BOM) before the framework layer — not jargon-rich-but-data-poor.
+- [ ] Opened with a **理解更新** / reframe, not a definition dump.
+- [ ] Re-derived the category from **first principles** and named the **北极星指标**.
+- [ ] Applied named frameworks **with numbers** (ratios, correlations, share-of-benchmark) — not just named them.
+- [ ] Built the **head-to-head comparison table** anchored to a benchmark (incl. the canonical peer set, e.g. miners → MARA/CLSK/MSTR).
+- [ ] Ran **尽调十问** (β/α/Timing) and **three-scenario** valuation with explicit probabilities + a banded target tethered to the report's own figures/method.
+- [ ] Separated **value creation from value capture**.
+- [ ] Stated the **disconfirming / black-swan risk** and the **bear-market stress test**.
+- [ ] Conclusions are **conditional and falsifiable**; framed as educational, not advice.
 
 ---
 
-## A Note on Forecasting Humility
-
-The research community has documented repeatedly (Tetlock, Kahneman, Taleb, and others) that expert forecasters at 10-year horizons barely outperform base rates, and often underperform simple heuristics. This framework does not promise to beat markets. It aims to:
-
-- Reduce obvious errors: buying fads, ignoring disruption risk, over-sizing, paying too much for growth.
-- Surface your actual assumptions explicitly so you can track which ones broke.
-- Build a process that improves through documented learning rather than hindsight rationalization.
-
-Markets are complex adaptive systems. Treat every analysis as a hypothesis under continuous revision, not a conclusion to defend.
-
----
-
-*Educational framework only. Not financial advice. All investing involves risk of loss. Consult a licensed advisor.*
+*Educational distillation of DecadeX public research methodology. Not financial advice. All investing risks loss of principal.*

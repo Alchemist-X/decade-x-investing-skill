@@ -1,124 +1,116 @@
-# decade-investing-skill
+# decade-x-investing-skill
 
-A Claude skill packaging a rigorous, process-driven framework for long-horizon (10-year) investment research and analysis.
+A Claude skill that distills the **research methodology of DecadeX (未来十年投资学堂, [decadex.org](https://decadex.org))** so an analyst — or Claude — can produce DecadeX-style long-horizon investment research across Crypto, AI, Consumer, and Funds/Capital.
 
-**This is an educational process tooling package. It is NOT financial advice, NOT personalized recommendations, and NOT a guarantee of any investment outcome. Markets carry substantial risk, including the possible loss of your entire principal. Always consult a qualified, licensed financial advisor before making investment decisions.**
+**Educational only.** This skill is sourced from DecadeX's own public research and packages *how they reason* (their named frameworks, house worldview, and report structure). It is **NOT financial advice, NOT a buy/sell recommendation, NOT affiliated with or endorsed by DecadeX**, and reproducing a house's reasoning style does not make its conclusions correct. All investing carries substantial risk including loss of principal. Consult a licensed advisor.
 
 ---
 
 ## What It Is
 
-`decade-investing-skill` gives Claude a structured research workflow for evaluating whether a theme, company, or asset class has genuine 10-year durability. It covers six interconnected steps — each backed by a reference file — plus a worked fictional example and reusable scoring template:
+`decade-x-investing` gives Claude the DecadeX research process: open with a **理解更新 (understanding update / versioned self-critique)**, re-derive the category from **first principles**, deploy DecadeX's **named frameworks applied with numbers**, build a benchmark-anchored **head-to-head comparison**, run the **尽调十问 (β/α/Timing)** scorecard, value with a **three-scenario probability-weighted PS/PE model**, and close with **conditional, falsifiable conclusions**.
 
-- **Megatrend validation** — distinguishing durable secular trends from cyclical fads across six categories (demographics, energy transition, compute/AI, biotech, geopolitical restructuring, financial/macro) using base rates, Wright's Law cost curves, clinical trial data, and crowding tests.
-- **Durability scoring** — structured 0–5 rubric across six dimensions: competitive moat (with ROIC and NRR benchmarks), TAM and runway (penetration rate, saturation timeline), secular tailwind alignment, balance sheet resilience (stress-tested at revenue −30%), management and capital allocation (M&A track record, vesting alignment), and disruption risk (with industry-specific disruption clocks).
-- **Valuation sanity** — reverse-DCF that works backward from price to implied assumptions, owner earnings yield (SBC-adjusted) vs. live risk-free rate, three-scenario probability-weighted expected value, and margin of safety thresholds calibrated to conviction level.
-- **Risk and sizing** — position sizing table calibrated to durability score and valuation margin, drawdown reference by asset class, correlation traps, time-horizon matching, and a full behavioral pitfall inventory with specific mitigations.
-- **Decision journaling** — a ten-section template to log thesis, scores, falsifiers, exit conditions, and review schedule before entry — and post-mortem notes at each review date.
-- **Worked fictional example** — complete end-to-end application of all five steps to the fictional NovaCure Industrial Systems (NCIS), showing real scoring decisions, valuation math, and a "do not invest at current price" conclusion driven by negative margin of safety.
-- **Scoring template CSV** — structured spreadsheet covering all scoring categories, valuation fields, conviction/sizing derivation, exit conditions, and post-mortem tracking across multiple theses over time.
-- **Visual cheatsheet** — a polished, standalone `cheatsheet.html` with dark theme, inline CSS (no CDN), and print-friendly layout — summarizing the full framework at a glance.
+It encodes the cross-cutting frameworks that recur across DecadeX's reports — 不可能三角 (and its re-ordering), 北极星指标, 价值创造 vs 价值捕获 (Ethereum≠ETH), 流量×流动性, 资产渗透率, 技术革命与金融资本 (Perez cycle), 收单/执行/清结算 settlement-stack, 能力圈映射, 三情景估值 — plus sector-specific frameworks for Crypto, AI, Funds/Capital, and Consumer.
 
-The framework emphasizes **process over prediction**, **base rates before bull cases**, **disconfirming evidence**, **second-order effects**, and **epistemic humility about long-horizon forecasting**.
+---
+
+## Sourcing & Provenance
+
+The skill is distilled from **DecadeX's public research corpus** (see [decadex.org/research](https://decadex.org/research)). The corpus itself is **gitignored and not republished**; only the *methodology* (frameworks, conclusions, analytical moves) is encoded in the reference files.
+
+- `corpus/fetch_corpus.py` — rebuilds the corpus locally (`corpus/corpus.json` + `corpus/text/<slug>.txt`) from DecadeX's public endpoint, for the eval pipeline. Requires `uv` (for `pymupdf`).
+- `eval/split.json` — the train/test split of DecadeX reports. The **train** set (24 reports) was distilled into the reference files; the **test** set (NVIDIA, Microsoft, Benchmark, sogo-shosha, eth-layer2, Coinbase, Marathon) is held out to evaluate whether applying this skill reproduces DecadeX-style reasoning on unseen reports.
 
 ---
 
 ## File Structure
 
 ```
-decade-investing-skill/
-├── SKILL.md                              # Main skill — workflow, principles, quick-start checklist
-├── README.md                             # This file
-├── LICENSE                               # MIT License
-├── cheatsheet.html                       # Visual one-pager — full framework at a glance
-├── .gitignore
-└── references/
-    ├── megatrends-checklist.md           # Secular trend vs. fad — 6 categories, base rates, fad tests
-    ├── durability-rubric.md              # 10-year durability rubric — 6 dimensions, ROIC/NRR benchmarks
-    ├── valuation-sanity.md               # Valuation sanity — reverse DCF, OE yield, 3-scenario, MoS
-    ├── risk-and-sizing.md                # Sizing, drawdown, correlation, behavioral pitfalls, exit conditions
-    ├── decision-journal-template.md      # 10-section thesis log — pre-entry and post-mortem
-    ├── worked-example.md                 # End-to-end fictional example (NovaCure NCIS) — illustrative only
-    └── scoring-template.csv              # Reusable structured scoring sheet for all analyses
+decade-x-investing-skill/
+├── SKILL.md                          # Main skill — worldview, workflow, cross-cutting frameworks, file guide
+├── README.md                         # This file
+├── LICENSE                           # MIT License
+├── cheatsheet.html                   # Visual one-pager — DecadeX frameworks at a glance
+├── .gitignore                        # (gitignores corpus/)
+├── references/
+│   ├── methodology.md                # End-to-end DecadeX research + writing process (the house arc, analytical moves)
+│   ├── frameworks-crypto.md          # Crypto frameworks: trilemma re-ordering, 协议层vs应用层, REV/GDP 税权, settlement-stack, exchange 三分类, stablecoin trilemma, PerpDex, asset-lifecycle
+│   ├── frameworks-ai.md              # AI frameworks: 大模型=逻辑输出机器, Pre×Post×TTS, Scaling Law, ad-revenue decomposition, Core/Gen AI, AI+ vs +AI, Y=M·X compute lens
+│   ├── frameworks-investing.md       # Funds/capital/macro: 技术革命与金融资本, 能力圈映射, 幂数定律/Vintage, LP三诉求, 渗透率TAM, fund北极星
+│   ├── frameworks-consumer.md        # Consumer: 硬件→SaaS迁移, 两阶段时点, 平台vs品牌/船票, 直播电商=沉浸式广告, GMV双路径, 组织架构→渗透率
+│   ├── report-index.md               # House knowledge base — one line per DecadeX report
+│   └── writing-template.md           # The DecadeX report skeleton to reproduce
+├── corpus/
+│   ├── fetch_corpus.py               # Rebuild the DecadeX corpus locally (gitignored output)
+│   ├── corpus.json                   # Corpus metadata
+│   └── text/                         # Extracted report text (gitignored)
+└── eval/
+    └── split.json                    # Train/test split of DecadeX reports
 ```
 
 ---
 
 ## How to Install as a Claude Code Skill
 
-### Option 1 — Project-level skill (recommended)
-
-1. Clone this repo into your project's `.claude/skills/` directory (create it if it does not exist):
+### Project-level (recommended)
 
 ```bash
-git clone https://github.com/Alchemist-X/decade-investing-skill.git .claude/skills/decade-investing-skill
+git clone <this-repo> .claude/skills/decade-x-investing
 ```
 
-2. Claude Code will automatically discover skills in `.claude/skills/`. The `SKILL.md` frontmatter registers the skill name and trigger description.
+Claude Code auto-discovers skills in `.claude/skills/`. The `SKILL.md` frontmatter registers the name and trigger description.
 
-### Option 2 — User-level skill (available across all projects)
-
-1. Clone into your user Claude skills directory:
+### User-level (all projects)
 
 ```bash
-git clone https://github.com/Alchemist-X/decade-investing-skill.git ~/.claude/skills/decade-investing-skill
+git clone <this-repo> ~/.claude/skills/decade-x-investing
 ```
 
-### Option 3 — Manual reference
+### Manual reference
 
-Copy `SKILL.md`, the `references/` directory, and `cheatsheet.html` anywhere convenient and reference them directly in your Claude conversations. Open `cheatsheet.html` in any browser for a quick-reference one-pager.
+Copy `SKILL.md`, `references/`, and `cheatsheet.html` anywhere and reference them directly. Open `cheatsheet.html` for the one-pager.
 
 ---
 
 ## How to Use
 
-Once installed, invoke the skill in Claude by describing a long-horizon investment research task. Example prompts that trigger the skill:
+Invoke by asking for DecadeX-style / 未来十年-style long-horizon research in Crypto / AI / Consumer / Funds. Example prompts that trigger the skill:
 
-- "Help me research whether the AI infrastructure theme has 10-year durability."
-- "Run a decade-investing analysis on [company or sector]."
-- "I want to build a 10-year investment thesis — walk me through the framework."
-- "Run a megatrend check and durability score for [sector]."
-- "Show me a worked example of how to use this framework."
-- "Help me fill out a decision journal entry for [investment]."
-- "What does this price imply about growth assumptions — run a reverse DCF sanity check."
+- "Write a DecadeX-style deep-dive on [token/company/sector]."
+- "Apply DecadeX's 不可能三角 / REV/GDP 税权 / 流量×流动性 framework to [X]."
+- "Value [token] the DecadeX way — three-scenario PS/PE with a regulatory discount."
+- "Run the 尽调十问 (β/α/Timing) on [company]."
+- "Give me the 理解更新 vs DecadeX's prior view on [topic]."
+- "Reproduce a DecadeX report on [X] in their 理解更新→核心结论→框架展开 structure."
 
-Claude will walk you through the end-to-end workflow defined in `SKILL.md`, using the `references/` files at each step. For orientation, open `cheatsheet.html` first — it shows the complete framework at a glance.
+Claude follows the workflow in `SKILL.md`, pulling the matching `references/frameworks-*.md`, grounding against `references/report-index.md`, and drafting with `references/writing-template.md`.
+
+---
+
+## The Eval Pipeline
+
+The `corpus/` + `eval/` setup exists so the skill can be **measured against DecadeX's own reports**:
+
+1. `python3 corpus/fetch_corpus.py` rebuilds the local corpus from DecadeX's public research.
+2. `eval/split.json` defines the **train** reports (distilled into the references) and the held-out **test** reports.
+3. To evaluate: prompt Claude (with this skill) to produce research on a *test* slug, then compare its frameworks, analytical moves, and conclusions against the held-out ground-truth report — checking whether the skill reproduces DecadeX-style reasoning on unseen material.
 
 ---
 
 ## Key Design Choices
 
-**Why no price targets?** Valuation models are imprecise. Producing a specific price target creates false precision and invites anchoring. The framework instead asks "what does this price require me to believe?" (reverse DCF) and "how wrong can I be and still achieve an adequate outcome?" (margin of safety) — questions that are both more honest and more actionable.
-
-**Why a decision journal?** The primary cause of long-horizon underperformance is behavioral: investors confuse "price went down" with "thesis is broken," and sell at troughs. The journal creates a pre-commitment to specific falsifiers — observable conditions, not price levels — that separate thesis deterioration from price noise.
-
-**Why base rates throughout?** Narrative is seductive; base rates are grounding. Every framework prompt asks "what percentage of comparable situations historically ended this way?" before building a forward case. This prevents the common error of treating an unusual company as if the laws of business physics do not apply.
+- **Reproduce the process, not the predictions.** The skill encodes DecadeX's *reasoning style* (reframe-first, first-principles, frameworks-with-numbers, scenario valuation), not a set of price calls. Conclusions stay conditional and falsifiable.
+- **Frameworks are named and concrete.** Each reference file states a framework, then *applies it with numbers* (ratios, correlations, share-of-benchmark) so following it reproduces DecadeX's reasoning rather than a vague gesture at it.
+- **Train/test discipline.** Distilling only from the train split and holding out a test split lets the skill be honestly evaluated for whether it generalizes.
 
 ---
 
 ## Disclaimer
 
-**IMPORTANT — READ BEFORE USE:**
-
-This skill and all associated files are provided for **educational and informational purposes only**. Nothing in this repository constitutes:
-
-- Personalized financial advice.
-- A recommendation to buy, sell, or hold any security.
-- A solicitation or offer to invest in any fund or investment vehicle.
-- A guarantee or prediction of any investment outcome.
-
-Investing in securities involves **substantial risk, including the possible loss of your entire principal**. Past performance of any investment does not predict future results. The frameworks provided are general educational tools — they do not account for your personal financial situation, tax circumstances, risk tolerance, liquidity needs, or investment objectives.
-
-The worked example (`references/worked-example.md`) uses a completely fictional company (NovaCure Industrial Systems / NCIS) with invented figures. It is not research on any real company and does not represent a recommendation regarding any real security.
-
-**Before making any investment decision, consult a qualified, licensed financial advisor who understands your complete personal and financial situation.**
-
-The authors and contributors of this repository accept no liability for investment decisions made using this framework.
+This skill and all associated files are for **educational and informational purposes only**. Nothing here is personalized financial advice, a recommendation to buy/sell/hold any security or token, a solicitation, or a guarantee of any outcome. It is a distillation of DecadeX's *public research methodology* and is not affiliated with, authorized by, or endorsed by DecadeX. Investing involves substantial risk including the possible loss of your entire principal; past performance does not predict future results. **Consult a qualified, licensed financial advisor before making any investment decision.** The authors accept no liability for decisions made using this framework.
 
 ---
 
 ## License
 
-MIT License — see `LICENSE` for details.
-
-Copyright (c) 2026 Alchemist-X
+MIT License — see `LICENSE`.
