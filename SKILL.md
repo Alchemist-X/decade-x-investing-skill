@@ -7,7 +7,9 @@ description: >
   consumer (汽车/直播电商/商社), and funds/capital (VC/捐赠基金/技术周期). Use when asked for DecadeX-style or
   未来十年-style research, a 10-year/decade investment thesis, a deep-dive on a company/sector/asset in those domains,
   to apply a named DecadeX framework, to value a token/stock the DecadeX way, or to write a report in DecadeX's
-  理解更新→核心结论→框架展开 structure. Educational — distilled from DecadeX public research, NOT financial advice.
+  理解更新→核心结论→框架展开 structure. Ships free, no-key data tooling (SEC EDGAR / CoinGecko / DefiLlama /
+  Treasury+FRED fetchers + a pure reverse-DCF / scenario-weighting / owner-yield calculator) so the analysis is
+  numbers-anchored. Educational — distilled from DecadeX public research, NOT financial advice.
 ---
 
 # DecadeX Investing Skill
@@ -47,6 +49,9 @@ These house priors recur across every report and are the *spine* of DecadeX reas
 11. **Period-lock + recover the human's ACTUAL thesis (the #1 discipline).** Reason from the data available *at the report's date*; do **not** impose a later, contrarian, or inverted conclusion the report never reached. DecadeX is often *bullish-with-a-number*, not reflexively contrarian-bearish. Recover the house's real conclusion polarity, its real North Star metric, and its documented strategy — do not substitute a self-invented metric or manufacture a contrarian inversion. (See `methodology.md` §0a.)
 12. **Native-framework discovery before generic toolkits.** Infer the report's OWN organizing spine from the subject's history (e.g. trading houses → five-function build-up; VC → 找得到/看得清/投得进/帮得上 + the partner's own scoring models; incumbents → "能否再造操作系统"). If the title is a question, lead with and answer it. (See `methodology.md` §0b.)
 13. **Hard business anchors before jargon.** Do the financial teardown (installed base/share, segment revenue & margin, per-unit pricing, native ratios, real fund IRR ladder, BOM) *first*. Jargon-rich, data-poor analysis is penalized.
+14. **Build the full TABLE and land the POINT number (the #1 depth gap).** Reproduce the house's whole grid — all cells, all THREE cases incl. **pessimistic** (demand tables, segment+margin forecasts, per-product/per-SKU bottom-up builds, per-deal multiple tables, fund IRR/DPI ladders, quarterly P&L walks, DuPont time-series, competitor market-share %s) — not a vague band or named framework. Then **carry the method through to concrete outputs** (SOTP $X.XXT, bull/bear $, leverage-proxy price grid) and **DERIVE** the headline from the rebuilt model rather than asserting it. See `data-analysis.md` **Part 0**.
+15. **Quantify the moat, score the founder, never fabricate.** A named moat needs a NUMBER (CUDA dev/contributor/app/download counts vs the challenger %; license map + cost; share-of-Binance). Founder/governance is scored alpha (voting %, insider %, succession model), not a footnote. Every figure is tagged 事实/推断/illustrative; do NOT invent plausible ratios when a real source exists, do NOT attribute a fabricated metric to a prior version, and do NOT let a placeholder tool output anchor the headline.
+16. **Surface the differentiated REFRAME the human reached.** Recover the house's actual non-obvious angle: "不仅仅是交易所" = value-CREATION across engines (exchange analogue of Ethereum≠ETH); ecosystem-MAPPING for multi-actor topics (AI 8-category model↔app stack, crypto 两胜负手 incl. 合规); founder-as-alpha; FX bidirectionality; "optimal size moved" not "small=good". Do not flatten it to the generic toolkit.
 
 ---
 
@@ -62,6 +67,12 @@ Open with how the understanding has *changed*. If prior versions exist, tabulate
 
 ### Step 2 — 第一性原理 + 重新定义品类 (First principles, redefine the category)
 Re-derive what the thing *is* before judging it. Pick the right lens (finance not internet; asset not traffic; logic-machine not chatbot). Name the **北极星指标**.
+
+### Step 2a — 数据获取 (Data acquisition)
+Before any framework, **get the hard numbers** (worldview #13: hard business anchors before jargon). `references/data-sources.md` is the per-sector catalog of *where/how* to get data (free vs key, with the matching tool). Prefer the bundled **free, no-key** fetchers in `tools/` (see `tools/README.md`): `fetch_edgar.py` (US-company financials — revenue/net income/CFO/CapEx/shares), `fetch_crypto.py` (token price/mktcap/volume + chain/protocol TVL), `fetch_macro.py` (Treasury rates, FRED series). **Period-lock** the data to the report's date (worldview #11).
+
+### Step 2b — 数据分析 (Data analysis)
+Turn raw data into DecadeX conclusions using `references/data-analysis.md` — the quantitative playbook (key metrics per sector + the methods: penetration/cohort, unit economics, take-rate decomposition, reverse-DCF, three-scenario probability-weighted valuation, sum-of-parts, sensitivity). The pure calculator **`tools/analyze.py`** computes the recurring primitives: `reverse-dcf` (反向 DCF — implied growth), `scenarios` (三情景概率加权估值), `owner-yield` (FCF-yield cash-cow screen). Feed it FCF = CFO − CapEx from `fetch_edgar.py`.
 
 ### Step 3 — 框架展开 (Deploy the named frameworks)
 Select the cross-cutting frameworks (below) + the sector frameworks from the matching `references/frameworks-*.md`. Each framework must be *applied with numbers*, not just named. Anchor on hard ratios and correlations.
@@ -94,6 +105,11 @@ These are the frameworks that appear in *multiple* domains. Apply them everywher
 | **技术革命与金融资本 (Perez cycle)** | ~50yr cycle: 导入(爆发+狂热)→展开(协同+成熟); 基础设施→神器→衍生应用; 渗透率>5% trigger | macro, AI, autos, funds |
 | **尽调十问 (β/α/Timing)** | Fixed DD scorecard splitting industry-beta from company-alpha | every company report |
 | **三情景概率加权估值** | Bear/Base/Bull × driver → multiple → discount → expectation | every valuation |
+| **逐产品自下而上收入建模 (per-SKU bottom-up)** | each surface: 用户数 × 渗透率ladder × 单价; token line via inference-economics | big-tech AI, exchanges, ad platforms |
+| **三情景需求表 (demand table, units×$, incl. pessimistic)** | bottom-up units × $ across opt/neu/**pess**; never drop the bear leg | hardware, commodity, capex-heavy |
+| **护城河量化 (moat quantification)** | force a NUMBER on the moat: dev/contributor/app/download vs challenger %; license map+cost | every moat claim |
+| **创始人/治理即α (founder/governance as scored alpha)** | voting %, insider %, succession model, per-partner deal-share % | founder-led names, funds |
+| **DuPont 时间序列 (15-20yr)** | margin × turnover × equity-multiplier charted over time, not point estimates | conglomerates, cash-cows, financials |
 | **穿越牛熊 / bear-market stress test** | Real demand = non-subsidized TVL + DAU surviving the bear | crypto, consumer |
 | **品类定义者 (category-definer)** | Back the track's definer; new cycle ⇒ new company | every sector |
 | **能力圈映射 (circle of competence)** | A fund's returns = founders' competence circle mapped to markets | funds |
@@ -113,6 +129,9 @@ These are the frameworks that appear in *multiple* domains. Apply them everywher
 | File | What it gives you | Use in |
 |---|---|---|
 | `references/methodology.md` | The end-to-end DecadeX research + writing *process* (analytical moves, data-anchor discipline, versioned self-critique) — **§0a period-lock/thesis-polarity, §0b native-framework discovery** | All steps |
+| `references/data-sources.md` | **数据获取** — per-sector catalog of WHERE/HOW to get data (free vs key) with the matching `tools/` script; faithful to what DecadeX uses + the free sources the new tools cover (SEC EDGAR, CoinGecko, DefiLlama, Treasury/FRED) | Step 2a |
+| `references/data-analysis.md` | **数据分析** — the quantitative playbook. **Part 0 = the quantitative-depth bar (build the table / land the point number / quantify the moat / anti-fabrication — read FIRST).** Then key metrics per sector and analysis methods (per-product bottom-up build, token-economics, 3-case demand table, segment forecast, moat-quant, founder-scoring, DuPont time-series, leverage-proxy price grid, bottom-up token worksheet, survival ranking, cost reconstruction, reverse-DCF, 3-scenario valuation, SOTP, sensitivity), each with a how-to + tool | Step 2b, 3, 6 |
+| `tools/README.md` | The bundled free/no-key data + analysis scripts: `fetch_edgar.py`, `fetch_crypto.py`, `fetch_macro.py`, `analyze.py` (CLI + optional env keys) | Steps 2a, 2b, 6 |
 | `references/frameworks-crypto.md` | Crypto frameworks: trilemma re-ordering, protocol-vs-application split, REV/GDP 税权, L1=主权货币, settlement-stack, exchange 三分类 (+ Coinbase bull/bear by date, 地域事实性垄断, 合规四维, 银行收入拆解), stablecoin trilemma, PerpDex, **L1×L2 complementary-vs-competitive (period-locked)**, **BTC-miner leverage-regression / 减半周期 / P/B**, asset-lifecycle, Crypto 第一性原理/记账范式 | Crypto deep-dives |
 | `references/frameworks-ai.md` | AI frameworks: 大模型=逻辑输出机器, Pre×Post×TTS, Scaling Law, ad-platform revenue decomposition, Core/Gen AI (β/α), AI+ vs +AI, Y=M·X compute lens; **incumbent-platform §N (再造操作系统 north star, 场景>>数据>>算法>>算力, OpenAI deal mechanics, 开源vs闭源, PS valuation track)**; **hardware-monopolist §O (锤子/收税官/周期股, GPU demand sizing, BOM/decoupling)** | AI deep-dives |
 | `references/frameworks-investing.md` | Funds/capital/macro: 技术革命与金融资本, 能力圈映射, 幂数定律, Vintage Year, LP三诉求, 安全边际, 渗透率TAM; **VC spine 找得到/看得清/投得进/帮得上 + partner scoring models + EIR + 反偏见流程 + 对中国VC启示 + AUM随市场移动**; **sogo-shosha §H (五大功能/商权/资本生命周期/Buffett yen-bond FX机制)** | Fund & macro deep-dives |
@@ -127,7 +146,12 @@ These are the frameworks that appear in *multiple* domains. Apply them everywher
 
 - [ ] **Period-locked**: reasoned from the report's date; did NOT impose a later/contrarian/inverted thesis; recovered the human's actual conclusion *polarity* and *North Star metric* (not a self-invented one).
 - [ ] Used the report's **native framework spine** (and answered the title-question if the title is one), not only the generic toolkit.
-- [ ] Did the **hard business teardown** (financials/share/ratios/real fund-IRR ladder/BOM) before the framework layer — not jargon-rich-but-data-poor.
+- [ ] Did the **hard business teardown** (financials/share/ratios/real fund-IRR ladder/BOM) before the framework layer — not jargon-rich-but-data-poor. Pulled the numbers via `tools/` (EDGAR/CoinGecko/DefiLlama/Treasury) per `references/data-sources.md`, and computed the valuation primitives via `tools/analyze.py` per `references/data-analysis.md`.
+- [ ] **Built the full TABLE, all three cases incl. pessimistic** (demand / segment+margin forecast / per-product or per-SKU bottom-up / per-deal multiples / fund IRR-DPI ladder / quarterly P&L walk / DuPont time-series / competitor market-share %s) — not a one-line band. (`data-analysis.md` Part 0.)
+- [ ] **Landed CONCRETE point outputs** (SOTP $, bull/bear $, leverage-proxy price grid, "~Nx in 5yr") and **DERIVED** the headline from the rebuilt model — did not stop at the method or assert against the precedent.
+- [ ] **Quantified the moat** (dev/contributor/app/download counts vs challenger %, or license map+cost) and **scored founder/governance** (voting %, insider %, succession) — numbers, not names.
+- [ ] **No fabrication:** every number tagged 事实/推断/illustrative; no invented ratios where a real source exists; no fabricated metric attributed to a prior version; no placeholder tool-output anchoring the headline; acknowledged any proprietary-data gap honestly.
+- [ ] **Surfaced the human's differentiated reframe** (value-creation-vs-capture for the equity; ecosystem-mapping for multi-actor topics; the native angle) — not flattened to the generic toolkit.
 - [ ] Opened with a **理解更新** / reframe, not a definition dump.
 - [ ] Re-derived the category from **first principles** and named the **北极星指标**.
 - [ ] Applied named frameworks **with numbers** (ratios, correlations, share-of-benchmark) — not just named them.

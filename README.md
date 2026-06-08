@@ -12,6 +12,8 @@ A Claude skill that distills the **research methodology of DecadeX (未来十年
 
 It encodes the cross-cutting frameworks that recur across DecadeX's reports — 不可能三角 (and its re-ordering), 北极星指标, 价值创造 vs 价值捕获 (Ethereum≠ETH), 流量×流动性, 资产渗透率, 技术革命与金融资本 (Perez cycle), 收单/执行/清结算 settlement-stack, 能力圈映射, 三情景估值 — plus sector-specific frameworks for Crypto, AI, Funds/Capital, and Consumer.
 
+It also ships **free, no-key data tooling** so the analysis is numbers-anchored (DecadeX's "hard business anchors before jargon" discipline): fetchers for SEC EDGAR, CoinGecko, DefiLlama, and US Treasury/FRED, plus a pure (offline) calculator for reverse-DCF, three-scenario probability-weighted valuation, and owner-earnings (FCF) yield. See `tools/README.md`, `references/data-sources.md` (where to get data), and `references/data-analysis.md` (what to compute).
+
 ---
 
 ## Sourcing & Provenance
@@ -34,12 +36,20 @@ decade-x-investing-skill/
 ├── .gitignore                        # (gitignores corpus/)
 ├── references/
 │   ├── methodology.md                # End-to-end DecadeX research + writing process (the house arc, analytical moves)
+│   ├── data-sources.md               # 数据获取 — per-sector catalog of WHERE/HOW to get data (free vs key) + matching tools/ script
+│   ├── data-analysis.md              # 数据分析 — quantitative playbook: metrics per sector (formula+signal) + methods (penetration, unit economics, take-rate, reverse-DCF, 3-scenario, SOTP, sensitivity)
 │   ├── frameworks-crypto.md          # Crypto frameworks: trilemma re-ordering, 协议层vs应用层, REV/GDP 税权, settlement-stack, exchange 三分类, stablecoin trilemma, PerpDex, asset-lifecycle
 │   ├── frameworks-ai.md              # AI frameworks: 大模型=逻辑输出机器, Pre×Post×TTS, Scaling Law, ad-revenue decomposition, Core/Gen AI, AI+ vs +AI, Y=M·X compute lens
 │   ├── frameworks-investing.md       # Funds/capital/macro: 技术革命与金融资本, 能力圈映射, 幂数定律/Vintage, LP三诉求, 渗透率TAM, fund北极星
 │   ├── frameworks-consumer.md        # Consumer: 硬件→SaaS迁移, 两阶段时点, 平台vs品牌/船票, 直播电商=沉浸式广告, GMV双路径, 组织架构→渗透率
 │   ├── report-index.md               # House knowledge base — one line per DecadeX report
 │   └── writing-template.md           # The DecadeX report skeleton to reproduce
+├── tools/                            # Free, no-key (stdlib-only) data + analysis scripts — see tools/README.md
+│   ├── README.md                     # CLI docs for all four tools (free/no-key; optional env keys noted)
+│   ├── fetch_edgar.py                # SEC EDGAR financials (revenue/net income/CFO/CapEx/shares) — no key
+│   ├── fetch_crypto.py               # CoinGecko price/mktcap/volume + DefiLlama chain/protocol TVL — no key
+│   ├── fetch_macro.py                # US Treasury avg rates (no key) + FRED series (free key)
+│   └── analyze.py                    # Pure (offline) reverse-DCF / 3-scenario weighting / owner-earnings yield
 ├── corpus/
 │   ├── fetch_corpus.py               # Rebuild the DecadeX corpus locally (gitignored output)
 │   ├── corpus.json                   # Corpus metadata
@@ -83,7 +93,16 @@ Invoke by asking for DecadeX-style / 未来十年-style long-horizon research in
 - "Give me the 理解更新 vs DecadeX's prior view on [topic]."
 - "Reproduce a DecadeX report on [X] in their 理解更新→核心结论→框架展开 structure."
 
-Claude follows the workflow in `SKILL.md`, pulling the matching `references/frameworks-*.md`, grounding against `references/report-index.md`, and drafting with `references/writing-template.md`.
+Claude follows the workflow in `SKILL.md`, pulling the matching `references/frameworks-*.md`, grounding against `references/report-index.md`, and drafting with `references/writing-template.md`. For the **data steps** it consults `references/data-sources.md` (where to get the numbers) and `references/data-analysis.md` (what to compute), running the bundled `tools/` fetchers and `tools/analyze.py` — all free and keyless.
+
+You can also run the tools directly:
+
+```bash
+python3 tools/fetch_edgar.py NVDA --metric RevenueFromContractWithCustomerExcludingAssessedTax
+python3 tools/fetch_crypto.py tvl ethereum
+python3 tools/fetch_macro.py treasury
+python3 tools/analyze.py reverse-dcf --mktcap 3e12 --fcf 9e10 --discount 0.10 --tgrowth 0.03
+```
 
 ---
 
