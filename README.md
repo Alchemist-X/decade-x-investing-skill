@@ -1,135 +1,152 @@
-# decade-x-investing-skill
+<p align="center"><img src="assets/banner.svg" alt="DecadeX Investing Skill" width="100%"></p>
 
-A Claude skill that distills the **research methodology of DecadeX (未来十年投资学堂, [decadex.org](https://decadex.org))** so an analyst — or Claude — can produce DecadeX-style long-horizon investment research across Crypto, AI, Consumer, and Funds/Capital.
-
-**Educational only.** This skill is sourced from DecadeX's own public research and packages *how they reason* (their named frameworks, house worldview, and report structure). It is **NOT financial advice, NOT a buy/sell recommendation, NOT affiliated with or endorsed by DecadeX**, and reproducing a house's reasoning style does not make its conclusions correct. All investing carries substantial risk including loss of principal. Consult a licensed advisor.
-
----
-
-## What It Is
-
-`decade-x-investing` gives Claude the DecadeX research process: open with a **理解更新 (understanding update / versioned self-critique)**, re-derive the category from **first principles**, deploy DecadeX's **named frameworks applied with numbers**, build a benchmark-anchored **head-to-head comparison**, run the **尽调十问 (β/α/Timing)** scorecard, value with a **three-scenario probability-weighted PS/PE model**, and close with **conditional, falsifiable conclusions**.
-
-It encodes the cross-cutting frameworks that recur across DecadeX's reports — 不可能三角 (and its re-ordering), 北极星指标, 价值创造 vs 价值捕获 (Ethereum≠ETH), 流量×流动性, 资产渗透率, 技术革命与金融资本 (Perez cycle), 收单/执行/清结算 settlement-stack, 能力圈映射, 三情景估值 — plus sector-specific frameworks for Crypto, AI, Funds/Capital, and Consumer.
-
-It also ships **free, no-key data tooling** so the analysis is numbers-anchored (DecadeX's "hard business anchors before jargon" discipline): fetchers for SEC EDGAR, CoinGecko, DefiLlama, and US Treasury/FRED, plus a pure (offline) calculator for reverse-DCF, three-scenario probability-weighted valuation, and owner-earnings (FCF) yield. See `tools/README.md`, `references/data-sources.md` (where to get data), and `references/data-analysis.md` (what to compute).
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="MIT License"></a>
+  <img src="https://img.shields.io/badge/python-3.x-3776ab?style=flat-square" alt="Python 3">
+  <img src="https://img.shields.io/badge/claude-skill-10b981?style=flat-square" alt="Claude Skill">
+  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square" alt="PRs Welcome">
+  <img src="https://img.shields.io/badge/eval-83.6%25_avg_similarity-brightgreen?style=flat-square" alt="Eval 83.6% avg similarity">
+</p>
 
 ---
 
-## Sourcing & Provenance
+# 📈 DecadeX Investing Skill
 
-The skill is distilled from **DecadeX's public research corpus** (see [decadex.org/research](https://decadex.org/research)). The corpus itself is **gitignored and not republished**; only the *methodology* (frameworks, conclusions, analytical moves) is encoded in the reference files.
+**A Claude skill that teaches long-horizon investment research in the style of [DecadeX (未来十年投资学堂)](https://decadex.org).** It encodes DecadeX's named frameworks, house worldview, and end-to-end report structure so an analyst — or Claude — can produce 10-year-horizon deep-dives across Crypto, AI, Consumer, and Funds/Capital. It also ships **four free, no-key data tools** (SEC EDGAR, CoinGecko+DefiLlama, Treasury+FRED, and a pure valuation calculator) so every analysis is grounded in real numbers rather than vibes.
 
-- `corpus/fetch_corpus.py` — rebuilds the corpus locally (`corpus/corpus.json` + `corpus/text/<slug>.txt`) from DecadeX's public endpoint, for the eval pipeline. Requires `uv` (for `pymupdf`).
-- `eval/split.json` — the train/test split of DecadeX reports. The **train** set (24 reports) was distilled into the reference files; the **test** set (NVIDIA, Microsoft, Benchmark, sogo-shosha, eth-layer2, Coinbase, Marathon) is held out to evaluate whether applying this skill reproduces DecadeX-style reasoning on unseen reports.
+> **Educational only.** This skill distills DecadeX's *public research methodology*, not its predictions. It is NOT financial advice, NOT affiliated with or endorsed by DecadeX, and reproducing a house's reasoning style does not make its conclusions correct. All investing carries substantial risk. Consult a licensed advisor.
 
 ---
 
-## File Structure
+## ✨ Features
 
-```
-decade-x-investing-skill/
-├── SKILL.md                          # Main skill — worldview, workflow, cross-cutting frameworks, file guide
-├── README.md                         # This file
-├── LICENSE                           # MIT License
-├── cheatsheet.html                   # Visual one-pager — DecadeX frameworks at a glance
-├── .gitignore                        # (gitignores corpus/)
-├── references/
-│   ├── methodology.md                # End-to-end DecadeX research + writing process (the house arc, analytical moves)
-│   ├── data-sources.md               # 数据获取 — per-sector catalog of WHERE/HOW to get data (free vs key) + matching tools/ script
-│   ├── data-analysis.md              # 数据分析 — quantitative playbook: metrics per sector (formula+signal) + methods (penetration, unit economics, take-rate, reverse-DCF, 3-scenario, SOTP, sensitivity)
-│   ├── frameworks-crypto.md          # Crypto frameworks: trilemma re-ordering, 协议层vs应用层, REV/GDP 税权, settlement-stack, exchange 三分类, stablecoin trilemma, PerpDex, asset-lifecycle
-│   ├── frameworks-ai.md              # AI frameworks: 大模型=逻辑输出机器, Pre×Post×TTS, Scaling Law, ad-revenue decomposition, Core/Gen AI, AI+ vs +AI, Y=M·X compute lens
-│   ├── frameworks-investing.md       # Funds/capital/macro: 技术革命与金融资本, 能力圈映射, 幂数定律/Vintage, LP三诉求, 渗透率TAM, fund北极星
-│   ├── frameworks-consumer.md        # Consumer: 硬件→SaaS迁移, 两阶段时点, 平台vs品牌/船票, 直播电商=沉浸式广告, GMV双路径, 组织架构→渗透率
-│   ├── report-index.md               # House knowledge base — one line per DecadeX report
-│   └── writing-template.md           # The DecadeX report skeleton to reproduce
-├── tools/                            # Free, no-key (stdlib-only) data + analysis scripts — see tools/README.md
-│   ├── README.md                     # CLI docs for all four tools (free/no-key; optional env keys noted)
-│   ├── fetch_edgar.py                # SEC EDGAR financials (revenue/net income/CFO/CapEx/shares) — no key
-│   ├── fetch_crypto.py               # CoinGecko price/mktcap/volume + DefiLlama chain/protocol TVL — no key
-│   ├── fetch_macro.py                # US Treasury avg rates (no key) + FRED series (free key)
-│   └── analyze.py                    # Pure (offline) reverse-DCF / 3-scenario weighting / owner-earnings yield
-├── corpus/
-│   ├── fetch_corpus.py               # Rebuild the DecadeX corpus locally (gitignored output)
-│   ├── corpus.json                   # Corpus metadata
-│   └── text/                         # Extracted report text (gitignored)
-└── eval/
-    └── split.json                    # Train/test split of DecadeX reports
+- **Full DecadeX research arc** — opens with 理解更新 (versioned self-critique), re-derives the category from first principles, deploys named frameworks with numbers, runs the 尽调十问 (β/α/Timing) scorecard, and closes with conditional, falsifiable conclusions
+- **Cross-cutting frameworks encoded** — 不可能三角, 北极星指标, 价值创造 vs 价值捕获, 流量×流动性, 资产渗透率, 技术革命与金融资本 (Perez cycle), 三情景概率加权估值, and more — each stated then *applied with numbers*
+- **Sector-specific playbooks** — dedicated reference files for Crypto (trilemma re-ordering, REV/GDP 税权, settlement stack, exchange 三分类, PerpDex), AI (Pre×Post×TTS, Scaling Law, ad-revenue decomposition), Funds/Capital (VC vintage power law, LP 三诉求), and Consumer (hardware→SaaS migration, GMV dual-path)
+- **Four free, stdlib-only data tools** — fetch SEC EDGAR financials, CoinGecko/DefiLlama crypto data, Treasury/FRED macro series, and run reverse-DCF + scenario valuation — no `pip install`, no API key required
+- **Train/test evaluated** — built from 24 training reports, held out on 7 unseen reports; blind-analyst avg similarity **83.6%** after two rounds of self-improvement
+- **Visual cheatsheet** — `cheatsheet.html` puts every framework on one printable page
+- **Immutable, robust tooling** — all scripts follow immutable style, exit non-zero on failure with actionable stderr messages, and never hardcode secrets
+
+---
+
+## 🎬 How it works
+
+```mermaid
+flowchart TD
+    A([User prompt:\nDecadeX-style deep-dive on X]) --> B[Claude loads SKILL.md\nworldview + workflow]
+    B --> C{Pick sector}
+    C -->|Crypto| D[frameworks-crypto.md]
+    C -->|AI| E[frameworks-ai.md]
+    C -->|Consumer| F[frameworks-consumer.md]
+    C -->|Funds/Capital| G[frameworks-investing.md]
+    D & E & F & G --> H[data-sources.md\nWhere to get numbers]
+    H --> I[tools/\nfetch_edgar · fetch_crypto\nfetch_macro · analyze]
+    I --> J[data-analysis.md\nWhat to compute]
+    J --> K[writing-template.md\nReport skeleton]
+    K --> L([理解更新 → 核心结论 → 框架展开\nScenario valuation · Falsifiable conclusions])
 ```
 
 ---
 
-## How to Install as a Claude Code Skill
+## 🚀 Quickstart
 
-### Project-level (recommended)
+### Install as a Claude Code skill
 
 ```bash
-git clone <this-repo> .claude/skills/decade-x-investing
+# Project-level (recommended — active for this project only)
+git clone https://github.com/Alchemist-X/decade-x-investing-skill.git .claude/skills/decade-x-investing
+
+# User-level (active across all your projects)
+git clone https://github.com/Alchemist-X/decade-x-investing-skill.git ~/.claude/skills/decade-x-investing
 ```
 
-Claude Code auto-discovers skills in `.claude/skills/`. The `SKILL.md` frontmatter registers the name and trigger description.
+Claude Code auto-discovers skills in `.claude/skills/`. The `SKILL.md` frontmatter registers the name and trigger description. Then just ask:
 
-### User-level (all projects)
-
-```bash
-git clone <this-repo> ~/.claude/skills/decade-x-investing
+```
+"Write a DecadeX-style deep-dive on Coinbase."
+"Apply DecadeX's 不可能三角 / REV/GDP 税权 framework to Solana."
+"Value NVDA the DecadeX way — three-scenario PS/PE with a regulatory discount."
+"Run the 尽调十问 (β/α/Timing) on Benchmark Capital."
+"Reproduce a DecadeX report on Ethereum L2 in their 理解更新→核心结论→框架展开 structure."
 ```
 
-### Manual reference
+### Run the data tools directly
 
-Copy `SKILL.md`, `references/`, and `cheatsheet.html` anywhere and reference them directly. Open `cheatsheet.html` for the one-pager.
-
----
-
-## How to Use
-
-Invoke by asking for DecadeX-style / 未来十年-style long-horizon research in Crypto / AI / Consumer / Funds. Example prompts that trigger the skill:
-
-- "Write a DecadeX-style deep-dive on [token/company/sector]."
-- "Apply DecadeX's 不可能三角 / REV/GDP 税权 / 流量×流动性 framework to [X]."
-- "Value [token] the DecadeX way — three-scenario PS/PE with a regulatory discount."
-- "Run the 尽调十问 (β/α/Timing) on [company]."
-- "Give me the 理解更新 vs DecadeX's prior view on [topic]."
-- "Reproduce a DecadeX report on [X] in their 理解更新→核心结论→框架展开 structure."
-
-Claude follows the workflow in `SKILL.md`, pulling the matching `references/frameworks-*.md`, grounding against `references/report-index.md`, and drafting with `references/writing-template.md`. For the **data steps** it consults `references/data-sources.md` (where to get the numbers) and `references/data-analysis.md` (what to compute), running the bundled `tools/` fetchers and `tools/analyze.py` — all free and keyless.
-
-You can also run the tools directly:
+All four tools require only Python 3 and zero third-party dependencies:
 
 ```bash
+# Pull SEC EDGAR financials (no key)
 python3 tools/fetch_edgar.py NVDA --metric RevenueFromContractWithCustomerExcludingAssessedTax
+python3 tools/fetch_edgar.py COIN --metric NetIncomeLoss --json
+
+# Token price + on-chain TVL (no key)
+python3 tools/fetch_crypto.py price bitcoin ethereum
 python3 tools/fetch_crypto.py tvl ethereum
-python3 tools/fetch_macro.py treasury
+python3 tools/fetch_crypto.py protocol-tvl aave
+
+# US Treasury rates + FRED macro series
+python3 tools/fetch_macro.py treasury          # no key
+python3 tools/fetch_macro.py fred CPIAUCSL     # needs FRED_API_KEY (free)
+
+# Pure valuation — reverse-DCF, 3-scenario, owner-yield (no network, no key)
 python3 tools/analyze.py reverse-dcf --mktcap 3e12 --fcf 9e10 --discount 0.10 --tgrowth 0.03
+python3 tools/analyze.py owner-yield --oe 9e10 --mktcap 3e12
+python3 tools/analyze.py scenarios --json '[{"label":"Bear","prob":0.3,"value":100},{"label":"Base","prob":0.5,"value":200},{"label":"Bull","prob":0.2,"value":400}]' --price 180
 ```
 
----
+**Typical chain:** `fetch_edgar.py` → CFO − CapEx = FCF → `analyze.py reverse-dcf` / `owner-yield` → `analyze.py scenarios`
 
-## The Eval Pipeline
+### Manual reference (no Claude Code required)
 
-The `corpus/` + `eval/` setup exists so the skill can be **measured against DecadeX's own reports**:
-
-1. `python3 corpus/fetch_corpus.py` rebuilds the local corpus from DecadeX's public research.
-2. `eval/split.json` defines the **train** reports (distilled into the references) and the held-out **test** reports.
-3. To evaluate: prompt Claude (with this skill) to produce research on a *test* slug, then compare its frameworks, analytical moves, and conclusions against the held-out ground-truth report — checking whether the skill reproduces DecadeX-style reasoning on unseen material.
+Copy `SKILL.md`, `references/`, and `cheatsheet.html` anywhere and reference them directly. Open `cheatsheet.html` in a browser for the visual one-pager of all frameworks.
 
 ---
 
-## Key Design Choices
+## ⚙️ Configuration
 
-- **Reproduce the process, not the predictions.** The skill encodes DecadeX's *reasoning style* (reframe-first, first-principles, frameworks-with-numbers, scenario valuation), not a set of price calls. Conclusions stay conditional and falsifiable.
-- **Frameworks are named and concrete.** Each reference file states a framework, then *applies it with numbers* (ratios, correlations, share-of-benchmark) so following it reproduces DecadeX's reasoning rather than a vague gesture at it.
-- **Train/test discipline.** Distilling only from the train split and holding out a test split lets the skill be honestly evaluated for whether it generalizes.
+All tools run keyless out of the box. Optional environment variables raise rate limits or unlock additional data sources — never required, never hardcoded:
+
+| Variable | Tool | Purpose |
+|---|---|---|
+| `SEC_USER_AGENT` | `fetch_edgar.py` | Polite User-Agent for SEC EDGAR (e.g. `"Your Name your@email.com"`) |
+| `COINGECKO_API_KEY` | `fetch_crypto.py` | Free demo key to raise CoinGecko rate limit (HTTP 429 = you hit the public limit) |
+| `FRED_API_KEY` | `fetch_macro.py` | Free key from [fredaccount.stlouisfed.org/apikeys](https://fredaccount.stlouisfed.org/apikeys) — unlocks the `fred` subcommand |
+| `DECADEX_API_KEY` | `analyze.py` | Output label only — `analyze.py` makes zero network calls |
+
+If you use an OpenAI-compatible LLM endpoint (Kimi/Moonshot, a local model, etc.) instead of Claude Code, the skill works with any model that can read Markdown files — point it at `SKILL.md` and the `references/` folder:
+
+```bash
+export LLM_API_KEY=your_key_here
+export LLM_BASE_URL=https://api.moonshot.cn/v1   # or https://api.openai.com/v1
+export LLM_MODEL=moonshot-v1-128k                # or gpt-4o, etc.
+```
+
+The skill itself has no LLM dependency — it is pure Markdown context injected into any model.
 
 ---
 
-## Disclaimer
+## 🗺️ Roadmap / Needs
 
-This skill and all associated files are for **educational and informational purposes only**. Nothing here is personalized financial advice, a recommendation to buy/sell/hold any security or token, a solicitation, or a guarantee of any outcome. It is a distillation of DecadeX's *public research methodology* and is not affiliated with, authorized by, or endorsed by DecadeX. Investing involves substantial risk including the possible loss of your entire principal; past performance does not predict future results. **Consult a qualified, licensed financial advisor before making any investment decision.** The authors accept no liability for decisions made using this framework.
+The skill is already evaluated and functional. These are the honest open items from the eval:
+
+- **`eth-layer2` ecosystem topics** — single-company deep-dives score 85-92; multi-actor ecosystem reads (mapping a whole L2 landscape) expose framework gaps and would benefit from richer competitive-landscape templates
+- **`coinbase`-style insight reframing** — the "not just an exchange" reframe improved from gap 47 → 23 with data tooling, but the residual ~23-point gap traces to granular competitor/dashboard data (Token Terminal, Messari) that the keyless tools can't fetch; a paid-data adapter would close it
+- **`microsoft` AIGC bottom-up** — the AI frameworks correctly identify the lenses (Copilot/token economics, SKU-level margin) but benefit from a more explicit per-SKU revenue build template
+- **Re-runnable eval harness** — `corpus/fetch_corpus.py` + `eval/split.json` are in place; a thin Python script to automate the blind-analyst → judge → score loop would make future improvement rounds push-button
+
+Contributions welcome — see the eval methodology in `eval/RESULTS.md` for how to measure whether a change actually helps.
 
 ---
 
-## License
+## 📄 License
 
-MIT License — see `LICENSE`.
+[MIT](LICENSE) — free to use, modify, and distribute. See `LICENSE` for the full text.
+
+---
+
+> **Disclaimer:** This project and all associated files are for educational and informational purposes only. Nothing here is personalized financial advice, a recommendation to buy/sell/hold any security or token, a solicitation, or a guarantee of any outcome. It is a distillation of DecadeX's *public research methodology* and is not affiliated with, authorized by, or endorsed by DecadeX. Investing involves substantial risk including possible loss of your entire principal; past performance does not predict future results. Consult a qualified, licensed financial advisor before making any investment decision.
+
+---
+
+<p align="center">⭐ Star this repo if it's useful — it helps others find the methodology.</p>

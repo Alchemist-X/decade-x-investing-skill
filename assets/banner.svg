@@ -1,0 +1,13 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='280' viewBox='0 0 1200 280' role='img' aria-label='DecadeX Investing Skill'>
+ <defs>
+  <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#0b0b12'/><stop offset='1' stop-color='#16161f'/></linearGradient>
+  <linearGradient id='ac' x1='0' y1='0' x2='1' y2='0'><stop offset='0' stop-color='#10b981'/><stop offset='1' stop-color='#34d399'/></linearGradient>
+ </defs>
+ <rect width='1200' height='280' fill='url(#bg)'/>
+ <rect width='1200' height='6' fill='url(#ac)'/>
+ <circle cx='1050' cy='150' r='150' fill='#10b981' opacity='0.10'/>
+ <circle cx='1150' cy='66' r='70' fill='#34d399' opacity='0.08'/>
+ <text x='80' y='126' font-family='Segoe UI,Helvetica,Arial,sans-serif' font-size='56' font-weight='700' fill='#ffffff'>DecadeX Investing Skill</text>
+ <text x='82' y='174' font-family='Segoe UI,Helvetica,Arial,sans-serif' font-size='25' fill='#9aa4b2'>A 10-year-horizon investment research method + live data tools</text>
+ <text x='82' y='226' font-family='Consolas,monospace' font-size='16' fill='#10b981' letter-spacing='1'>Claude Skill · Python tools · MIT</text>
+</svg>
